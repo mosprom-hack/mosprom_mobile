@@ -46,8 +46,8 @@ class _MentorDetailPageContent extends StatelessWidget {
         child: BlocBuilder<MentorDetailBloc, MentorDetailState>(
           builder: (context, state) {
             if (state is MentorDetailLoading) {
-              return Center(
-                child: CupertinoActivityIndicator(color: colors.primary),
+              return const Center(
+                child: CupertinoActivityIndicator(),
               );
             }
 

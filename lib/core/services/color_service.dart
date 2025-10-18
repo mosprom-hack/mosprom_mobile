@@ -44,5 +44,7 @@ class ColorService {
   Color get tabContainerBackground => AppColors.whiteAlpha02;
   Color get tabFilledActiveBackground => AppColors.purple500;
 
+  Color get dropdownMenuBackground => const Color(0xFF1A1A1A);
+
   Color get transparent => AppColors.transparent;
 }

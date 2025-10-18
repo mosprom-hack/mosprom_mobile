@@ -170,10 +170,8 @@ class _MentorsTab extends StatelessWidget {
     return BlocBuilder<EducationBloc, EducationState>(
       builder: (context, state) {
         if (state is EducationLoading) {
-          return Center(
-            child: CupertinoActivityIndicator(
-              color: colors.primary,
-            ),
+          return const Center(
+            child: CupertinoActivityIndicator(),
           );
         }
 
@@ -252,10 +250,8 @@ class _MentorsTab extends StatelessWidget {
           );
         }
 
-        return Center(
-          child: CupertinoActivityIndicator(
-            color: colors.primary,
-          ),
+        return const Center(
+          child: CupertinoActivityIndicator(),
         );
       },
     );
