@@ -50,5 +50,12 @@ class ColorService {
   Color get checkboxLabelText => AppColors.whiteAlpha60;
   Color get checkboxSelectedBackground => AppColors.purple500;
 
+  Color get textFieldBackground => AppColors.whiteAlpha02;
+  Color get textFieldBorder => AppColors.whiteAlpha01;
+  Color get textFieldText => AppColors.whiteAlpha80;
+  Color get textFieldPlaceholder => AppColors.whiteAlpha20;
+  Color get textFieldError => AppColors.red400;
+  Color get textFieldErrorText => AppColors.red400;
+
   Color get transparent => AppColors.transparent;
 }
