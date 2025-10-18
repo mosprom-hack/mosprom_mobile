@@ -7,6 +7,9 @@ class Mentor extends Equatable {
   final String? avatarUrl;
   final String? specialization;
   final String? bio;
+  final String? aboutMe;
+  final String? helpWith;
+  final String? experience;
 
   const Mentor({
     required this.id,
@@ -15,10 +18,23 @@ class Mentor extends Equatable {
     this.avatarUrl,
     this.specialization,
     this.bio,
+    this.aboutMe,
+    this.helpWith,
+    this.experience,
   });
 
   String get fullName => '$firstName $lastName';
 
   @override
-  List<Object?> get props => [id, firstName, lastName, avatarUrl, specialization, bio];
+  List<Object?> get props => [
+        id,
+        firstName,
+        lastName,
+        avatarUrl,
+        specialization,
+        bio,
+        aboutMe,
+        helpWith,
+        experience,
+      ];
 }

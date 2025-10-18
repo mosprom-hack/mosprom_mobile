@@ -37,6 +37,7 @@ class AppTab extends StatelessWidget {
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (icon != null) ...[
               Icon(
@@ -46,11 +47,16 @@ class AppTab extends StatelessWidget {
               ),
               const SizedBox(width: 4),
             ],
-            Text(
-              text,
-              style: AppFonts.labelLarge.copyWith(
-                color: _getTextColor(colors),
-                height: 16 / 14,
+            Flexible(
+              child: Text(
+                text,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: AppFonts.labelLarge.copyWith(
+                  color: _getTextColor(colors),
+                  height: 16 / 14,
+                ),
               ),
             ),
           ],

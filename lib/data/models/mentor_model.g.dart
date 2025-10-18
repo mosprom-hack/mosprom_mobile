@@ -14,6 +14,9 @@ _$MentorModelImpl _$$MentorModelImplFromJson(Map<String, dynamic> json) =>
       avatarUrl: json['avatarUrl'] as String?,
       specialization: json['specialization'] as String?,
       bio: json['bio'] as String?,
+      aboutMe: json['aboutMe'] as String?,
+      helpWith: json['helpWith'] as String?,
+      experience: json['experience'] as String?,
     );
 
 Map<String, dynamic> _$$MentorModelImplToJson(_$MentorModelImpl instance) =>
@@ -24,4 +27,7 @@ Map<String, dynamic> _$$MentorModelImplToJson(_$MentorModelImpl instance) =>
       'avatarUrl': instance.avatarUrl,
       'specialization': instance.specialization,
       'bio': instance.bio,
+      'aboutMe': instance.aboutMe,
+      'helpWith': instance.helpWith,
+      'experience': instance.experience,
     };

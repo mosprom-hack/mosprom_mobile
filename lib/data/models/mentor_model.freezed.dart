@@ -27,6 +27,9 @@ mixin _$MentorModel {
   String? get avatarUrl => throw _privateConstructorUsedError;
   String? get specialization => throw _privateConstructorUsedError;
   String? get bio => throw _privateConstructorUsedError;
+  String? get aboutMe => throw _privateConstructorUsedError;
+  String? get helpWith => throw _privateConstructorUsedError;
+  String? get experience => throw _privateConstructorUsedError;
 
   /// Serializes this MentorModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,6 +55,9 @@ abstract class $MentorModelCopyWith<$Res> {
     String? avatarUrl,
     String? specialization,
     String? bio,
+    String? aboutMe,
+    String? helpWith,
+    String? experience,
   });
 }
 
@@ -76,6 +82,9 @@ class _$MentorModelCopyWithImpl<$Res, $Val extends MentorModel>
     Object? avatarUrl = freezed,
     Object? specialization = freezed,
     Object? bio = freezed,
+    Object? aboutMe = freezed,
+    Object? helpWith = freezed,
+    Object? experience = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -103,6 +112,18 @@ class _$MentorModelCopyWithImpl<$Res, $Val extends MentorModel>
                 ? _value.bio
                 : bio // ignore: cast_nullable_to_non_nullable
                       as String?,
+            aboutMe: freezed == aboutMe
+                ? _value.aboutMe
+                : aboutMe // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            helpWith: freezed == helpWith
+                ? _value.helpWith
+                : helpWith // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            experience: freezed == experience
+                ? _value.experience
+                : experience // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -125,6 +146,9 @@ abstract class _$$MentorModelImplCopyWith<$Res>
     String? avatarUrl,
     String? specialization,
     String? bio,
+    String? aboutMe,
+    String? helpWith,
+    String? experience,
   });
 }
 
@@ -148,6 +172,9 @@ class __$$MentorModelImplCopyWithImpl<$Res>
     Object? avatarUrl = freezed,
     Object? specialization = freezed,
     Object? bio = freezed,
+    Object? aboutMe = freezed,
+    Object? helpWith = freezed,
+    Object? experience = freezed,
   }) {
     return _then(
       _$MentorModelImpl(
@@ -175,6 +202,18 @@ class __$$MentorModelImplCopyWithImpl<$Res>
             ? _value.bio
             : bio // ignore: cast_nullable_to_non_nullable
                   as String?,
+        aboutMe: freezed == aboutMe
+            ? _value.aboutMe
+            : aboutMe // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        helpWith: freezed == helpWith
+            ? _value.helpWith
+            : helpWith // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        experience: freezed == experience
+            ? _value.experience
+            : experience // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -190,6 +229,9 @@ class _$MentorModelImpl extends _MentorModel {
     this.avatarUrl,
     this.specialization,
     this.bio,
+    this.aboutMe,
+    this.helpWith,
+    this.experience,
   }) : super._();
 
   factory _$MentorModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -207,10 +249,16 @@ class _$MentorModelImpl extends _MentorModel {
   final String? specialization;
   @override
   final String? bio;
+  @override
+  final String? aboutMe;
+  @override
+  final String? helpWith;
+  @override
+  final String? experience;
 
   @override
   String toString() {
-    return 'MentorModel(id: $id, firstName: $firstName, lastName: $lastName, avatarUrl: $avatarUrl, specialization: $specialization, bio: $bio)';
+    return 'MentorModel(id: $id, firstName: $firstName, lastName: $lastName, avatarUrl: $avatarUrl, specialization: $specialization, bio: $bio, aboutMe: $aboutMe, helpWith: $helpWith, experience: $experience)';
   }
 
   @override
@@ -227,7 +275,12 @@ class _$MentorModelImpl extends _MentorModel {
                 other.avatarUrl == avatarUrl) &&
             (identical(other.specialization, specialization) ||
                 other.specialization == specialization) &&
-            (identical(other.bio, bio) || other.bio == bio));
+            (identical(other.bio, bio) || other.bio == bio) &&
+            (identical(other.aboutMe, aboutMe) || other.aboutMe == aboutMe) &&
+            (identical(other.helpWith, helpWith) ||
+                other.helpWith == helpWith) &&
+            (identical(other.experience, experience) ||
+                other.experience == experience));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -240,6 +293,9 @@ class _$MentorModelImpl extends _MentorModel {
     avatarUrl,
     specialization,
     bio,
+    aboutMe,
+    helpWith,
+    experience,
   );
 
   /// Create a copy of MentorModel
@@ -264,6 +320,9 @@ abstract class _MentorModel extends MentorModel {
     final String? avatarUrl,
     final String? specialization,
     final String? bio,
+    final String? aboutMe,
+    final String? helpWith,
+    final String? experience,
   }) = _$MentorModelImpl;
   const _MentorModel._() : super._();
 
@@ -282,6 +341,12 @@ abstract class _MentorModel extends MentorModel {
   String? get specialization;
   @override
   String? get bio;
+  @override
+  String? get aboutMe;
+  @override
+  String? get helpWith;
+  @override
+  String? get experience;
 
   /// Create a copy of MentorModel
   /// with the given fields replaced by the non-null parameter values.

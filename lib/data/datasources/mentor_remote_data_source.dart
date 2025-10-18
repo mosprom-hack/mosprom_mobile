@@ -2,6 +2,7 @@ import '../models/mentor_model.dart';
 
 abstract class MentorRemoteDataSource {
   Future<List<MentorModel>> getMentors();
+  Future<MentorModel> getMentorById(String id);
 }
 
 class MentorRemoteDataSourceImpl implements MentorRemoteDataSource {
@@ -12,13 +13,32 @@ class MentorRemoteDataSourceImpl implements MentorRemoteDataSource {
     return _mockMentors;
   }
 
+  @override
+  Future<MentorModel> getMentorById(String id) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    final mentor = _mockMentors.firstWhere(
+      (m) => m.id == id,
+      orElse: () => throw Exception('Ментор не найден'),
+    );
+
+    return mentor;
+  }
+
   static final List<MentorModel> _mockMentors = [
     const MentorModel(
       id: '1',
       firstName: 'Олег',
       lastName: 'Сдавайкин',
-      specialization: 'Product Management',
-      bio: 'Опытный продакт-менеджер с 10+ годами опыта',
+      specialization: 'инженер-разработчик встраиваемых систем (embedded-инженер)',
+      bio: 'Опытный разработчик встраиваемых систем',
+      aboutMe: '''Образование: высшее техническое (МФТИ, МИЭТ, ИТМО или аналогичный вуз); специальность: «Электроника и наноэлектроника», «Компьютерные науки»; магистерская степень + курсы по embedded-разработке и IoT.
+
+Место работы: ведущий инженер в R&D-отделе компании-производителя электроники («Миландр», Yadro, «Элвис-Неотек»); участник проектов по разработке встраиваемых систем для промышленности и потребительского рынка.
+
+Ключевые навыки: программирование на C/C++ для микроконтроллеров (STM32, ESP32, AVR); работа с периферийными интерфейсами (I²C, SPI, UART, CAN); проектирование и отладка печатных плат (Altium Designer, KiCad); сборка и тестирование прототипов; анализ даташитов и технических спецификаций (в т. ч. на английском); основы цифровой обработки сигналов (DSP).''',
+      helpWith: '''Разобраться в архитектуре и разработке IoT-устройств и встраиваемых систем. Настроить и оптимизировать работу беспроводных сетей (LoRa, Zigbee, Bluetooth LE, NB-IoT). Подключить устройства к облачным платформам — AWS IoT, Google Cloud IoT, Azure IoT. Оптимизировать энергопотребление и стабильность автономных сенсоров. Повысить безопасность IoT-решений: базовая криптография, защита данных и каналов связи. Настроить мониторинг, анализ логов и устранение сбоев в распределённых системах. Поделиться опытом внедрения IoT-платформ в промышленных и городских проектах.''',
+      experience: '''10+ лет опыта разработки встраиваемых систем для промышленности. Участие в проектах для компаний «Миландр», Yadro, «Элвис-Неотек». Разработка систем для автоматизации промышленных процессов и IoT-решений.''',
     ),
     const MentorModel(
       id: '2',

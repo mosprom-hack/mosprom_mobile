@@ -15,6 +15,9 @@ class MentorModel with _$MentorModel {
     String? avatarUrl,
     String? specialization,
     String? bio,
+    String? aboutMe,
+    String? helpWith,
+    String? experience,
   }) = _MentorModel;
 
   factory MentorModel.fromJson(Map<String, dynamic> json) =>
@@ -28,6 +31,9 @@ class MentorModel with _$MentorModel {
       avatarUrl: avatarUrl,
       specialization: specialization,
       bio: bio,
+      aboutMe: aboutMe,
+      helpWith: helpWith,
+      experience: experience,
     );
   }
 
@@ -39,6 +45,9 @@ class MentorModel with _$MentorModel {
       avatarUrl: entity.avatarUrl,
       specialization: entity.specialization,
       bio: entity.bio,
+      aboutMe: entity.aboutMe,
+      helpWith: entity.helpWith,
+      experience: entity.experience,
     );
   }
 }

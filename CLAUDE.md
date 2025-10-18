@@ -54,11 +54,70 @@ The project follows **Clean Architecture** with three layers:
 - Keep solutions concise and avoid over-engineering
 - Maintain clean architecture without excessive complexity
 
+## Navigation System
+
+### go_router Configuration
+
+**CRITICAL**: All navigation in the application MUST be handled through go_router.
+
+### Navigation Rules
+
+1. **Centralized Routing**: All routes are defined in `app/router/`
+2. **No Direct Navigation**: Never use `Navigator.push()`, `Navigator.pop()`, or other Navigator methods directly
+3. **go_router Methods Only**: Use only go_router methods:
+   - `context.go('/path')` - Navigate with replacement
+   - `context.push('/path')` - Navigate with stack preservation
+   - `context.pop()` - Go back
+   - `context.goNamed('routeName')` - Navigate using named routes
+   - `context.pushNamed('routeName')` - Push using named routes
+
+### Deep Linking Support
+
+**MANDATORY**: Every page in the application MUST support deep linking.
+
+#### Deep Linking Requirements
+
+1. **Route Configuration**: Each route must have a proper path defined in go_router configuration
+2. **Parameter Handling**: Routes with parameters must properly handle URL parameters
+3. **State Restoration**: Pages should restore their state when opened via deep link
+4. **Validation**: Validate parameters received from deep links
+5. **Error Handling**: Handle invalid or expired deep links gracefully
+
+#### Deep Link Structure
+
+```dart
+// Example route with deep linking support
+GoRoute(
+  path: '/community/:communityId',
+  name: 'community',
+  builder: (context, state) {
+    final communityId = state.pathParameters['communityId'];
+    return CommunityPage(communityId: communityId);
+  },
+),
+```
+
+#### Deep Link Testing
+
+When implementing a new page:
+1. Ensure the route is properly registered in go_router
+2. Test navigation via `context.push()` or `context.go()`
+3. Test direct URL access (deep link simulation)
+4. Verify parameter passing and state restoration
+
+### Navigation Best Practices
+
+1. **Named Routes**: Prefer named routes for better maintainability
+2. **Type Safety**: Use route parameters with proper type checking
+3. **Analytics**: Consider adding navigation analytics hooks
+4. **Transitions**: Configure custom transitions in go_router if needed
+5. **Guards**: Implement route guards for authentication/authorization when necessary
+
 ## Project Structure
 ```
 lib/
 ├── app/                    # Application-level code
-│   ├── router/            # go_router configuration
+│   ├── router/            # go_router configuration (MANDATORY for all navigation)
 │   └── services/          # App-wide services
 ├── core/                   # Core utilities and constants
 │   ├── consts/            # Constants (AppColors, AppFonts)
@@ -118,6 +177,9 @@ lib/
 - This semantic naming ensures theme consistency and makes code more maintainable
 - **All color references in widgets and pages must use ColorService**
 - Example pattern: `ColorService.instance.text` instead of direct color values or color names
+
+### Loaders
+All loaders must be `CupertinoActivityIndicator`
 
 ## Using Existing UI Components
 
@@ -217,12 +279,18 @@ When using Figma MCP server to generate UI components:
 7. ❌ **DO NOT** use standard Flutter UI widgets (TextButton, ElevatedButton, TextField, etc.) without first checking if custom components exist
 8. ❌ **DO NOT** create new UI components without checking ui/ and presentation/widgets/ folders first
 9. ❌ **DO NOT** skip the component discovery step - it is MANDATORY
-10. ✅ **ALWAYS** use relative imports when importing local files
-11. ✅ **ALWAYS** name pages with `_page.dart` suffix
-12. ✅ **ALWAYS** place BLoCs in a `blocs/` folder at the same level as their page
-13. ✅ **ALWAYS** check ui/ and presentation/widgets/ folders before adding ANY UI element
-14. ✅ **ALWAYS** use existing custom components instead of standard Flutter widgets
-15. ✅ **ALWAYS** adapt Figma designs to use project's custom components
+10. ❌ **DO NOT** use Navigator.push(), Navigator.pop(), or any direct Navigator methods
+11. ❌ **DO NOT** implement pages without deep linking support
+12. ✅ **ALWAYS** use relative imports when importing local files
+13. ✅ **ALWAYS** name pages with `_page.dart` suffix
+14. ✅ **ALWAYS** place BLoCs in a `blocs/` folder at the same level as their page
+15. ✅ **ALWAYS** check ui/ and presentation/widgets/ folders before adding ANY UI element
+16. ✅ **ALWAYS** use existing custom components instead of standard Flutter widgets
+17. ✅ **ALWAYS** adapt Figma designs to use project's custom components
+18. ✅ **ALWAYS** use go_router for ALL navigation (context.go(), context.push(), context.pop(), etc.)
+19. ✅ **ALWAYS** configure routes in app/router/ directory
+20. ✅ **ALWAYS** implement deep linking support for every page
+21. ✅ **ALWAYS** test both programmatic navigation and deep link access for new pages
 
 ## Application Domain Context
 
@@ -242,11 +310,13 @@ When implementing features, consider this social network context and the communi
 - Uses Kotlin with Java 11 target
 - Application ID should be updated for production
 - Configure proper signing for release builds
+- Configure Android deep linking in AndroidManifest.xml
 
 ### iOS
 - Swift-based implementation
 - Configure Bundle identifier for production
 - Ensure proper certificates and provisioning profiles
+- Configure iOS universal links for deep linking
 
 ## Code Quality
 

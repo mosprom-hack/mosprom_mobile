@@ -4,7 +4,9 @@ import '../../data/datasources/mentor_remote_data_source.dart';
 import '../../data/repositories/mentor_repository_impl.dart';
 import '../../domain/repositories/mentor_repository.dart';
 import '../../domain/usecases/get_mentors.dart';
+import '../../domain/usecases/get_mentor_by_id.dart';
 import '../../presentation/pages/home/education/blocs/education_bloc.dart';
+import '../../presentation/pages/home/education/mentor_detail/blocs/mentor_detail_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -21,10 +23,15 @@ void _initBlocs() {
   sl.registerFactory(
     () => EducationBloc(getMentors: sl()),
   );
+
+  sl.registerFactory(
+    () => MentorDetailBloc(getMentorById: sl()),
+  );
 }
 
 void _initUseCases() {
   sl.registerLazySingleton(() => GetMentors(sl()));
+  sl.registerLazySingleton(() => GetMentorById(sl()));
 }
 
 void _initRepositories() {

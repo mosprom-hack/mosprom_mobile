@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
+import 'package:go_router/go_router.dart';
+import '../../../../app/router/app_routes.dart';
 import '../../../../core/consts/app_fonts.dart';
 import '../../../../core/di/injection_container.dart';
 import '../../../../core/services/color_service.dart';
@@ -168,7 +171,7 @@ class _MentorsTab extends StatelessWidget {
       builder: (context, state) {
         if (state is EducationLoading) {
           return Center(
-            child: CircularProgressIndicator(
+            child: CupertinoActivityIndicator(
               color: colors.primary,
             ),
           );
@@ -238,7 +241,9 @@ class _MentorsTab extends StatelessWidget {
                       title: mentor.fullName,
                       avatarUrl: mentor.avatarUrl,
                       size: UserCardSize.compact,
-                      onTap: () {},
+                      onTap: () {
+                        context.push(AppRoutes.mentorDetailPath(mentor.id));
+                      },
                     );
                   },
                 ),
@@ -248,7 +253,7 @@ class _MentorsTab extends StatelessWidget {
         }
 
         return Center(
-          child: CircularProgressIndicator(
+          child: CupertinoActivityIndicator(
             color: colors.primary,
           ),
         );

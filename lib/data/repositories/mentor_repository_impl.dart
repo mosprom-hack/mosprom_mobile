@@ -12,4 +12,10 @@ class MentorRepositoryImpl implements MentorRepository {
     final mentorModels = await remoteDataSource.getMentors();
     return mentorModels.map((model) => model.toEntity()).toList();
   }
+
+  @override
+  Future<Mentor> getMentorById(String id) async {
+    final mentorModel = await remoteDataSource.getMentorById(id);
+    return mentorModel.toEntity();
+  }
 }
