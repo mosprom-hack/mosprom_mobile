@@ -12,6 +12,7 @@ class AppDropdown extends StatefulWidget {
   final AppDropdownSize size;
   final bool enabled;
   final IconData? leadingIcon;
+  final bool allowClear;
 
   const AppDropdown({
     super.key,
@@ -21,6 +22,7 @@ class AppDropdown extends StatefulWidget {
     this.size = AppDropdownSize.md,
     this.enabled = true,
     this.leadingIcon,
+    this.allowClear = false,
   });
 
   @override
@@ -35,6 +37,7 @@ class _AppDropdownState extends State<AppDropdown>
   late AnimationController _animationController;
   late Animation<double> _rotationAnimation;
   double _triggerWidth = 0;
+  bool _openUpward = false;
 
   @override
   void initState() {
@@ -83,8 +86,16 @@ class _AppDropdownState extends State<AppDropdown>
     final RenderBox? renderBox =
         _triggerKey.currentContext?.findRenderObject() as RenderBox?;
     if (renderBox != null) {
+      final position = renderBox.localToGlobal(Offset.zero);
+      final screenHeight = MediaQuery.of(context).size.height;
+      final triggerHeight = renderBox.size.height;
+      final spaceBelow = screenHeight - position.dy - triggerHeight;
+      final estimatedMenuHeight =
+          (widget.items.length * _getMenuItemHeight()) + 16;
+
       setState(() {
         _triggerWidth = renderBox.size.width;
+        _openUpward = spaceBelow < estimatedMenuHeight && position.dy > spaceBelow;
       });
     }
     _overlayController.show();
@@ -129,6 +140,7 @@ class _AppDropdownState extends State<AppDropdown>
     final isDisabled = !widget.enabled;
     final hasError = widget.controller.hasError;
     final hasValue = widget.controller.hasValue;
+    final showClearButton = hasValue && widget.allowClear;
 
     return GestureDetector(
       onTap: _toggleDropdown,
@@ -160,8 +172,34 @@ class _AppDropdownState extends State<AppDropdown>
               ),
             ),
             const SizedBox(width: 8),
-            _buildChevronButton(colors, isDisabled),
+            showClearButton
+                ? _buildClearButton(colors, isDisabled)
+                : _buildChevronButton(colors, isDisabled),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildClearButton(ColorService colors, bool isDisabled) {
+    return GestureDetector(
+      onTap: isDisabled
+          ? null
+          : () {
+              widget.controller.clear();
+            },
+      child: Container(
+        width: 52,
+        height: _getChevronButtonHeight(),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(32)),
+        child: Center(
+          child: Icon(
+            LucideIcons.x,
+            size: _getChevronIconSize(),
+            color: isDisabled
+                ? colors.buttonDisabledText
+                : colors.buttonSecondaryText,
+          ),
         ),
       ),
     );
@@ -196,9 +234,9 @@ class _AppDropdownState extends State<AppDropdown>
           Positioned.fill(child: Container(color: Colors.transparent)),
           CompositedTransformFollower(
             link: _layerLink,
-            targetAnchor: Alignment.bottomLeft,
-            followerAnchor: Alignment.topLeft,
-            offset: const Offset(0, 4),
+            targetAnchor: _openUpward ? Alignment.topLeft : Alignment.bottomLeft,
+            followerAnchor: _openUpward ? Alignment.bottomLeft : Alignment.topLeft,
+            offset: Offset(0, _openUpward ? -4 : 4),
             child: GestureDetector(onTap: () {}, child: _buildDropdownMenu()),
           ),
         ],

@@ -17,6 +17,7 @@ import '../../../../ui/tabs/app_tab.dart';
 import 'blocs/education_bloc.dart';
 import 'blocs/education_event.dart';
 import 'blocs/education_state.dart';
+import 'education_filters_bottom_sheet.dart';
 
 class EducationPage extends StatelessWidget {
   const EducationPage({super.key});
@@ -51,7 +52,14 @@ class _EducationPageContent extends StatelessWidget {
                     variant: AppButtonVariant.filled,
                     size: AppButtonSize.md,
                     icon: LucideIcons.settings_2,
-                    onPressed: () {},
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        backgroundColor: Colors.transparent,
+                        isScrollControlled: true,
+                        builder: (context) => const EducationFiltersBottomSheet(),
+                      );
+                    },
                   ),
                 ],
               ),

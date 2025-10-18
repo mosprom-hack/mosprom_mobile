@@ -57,5 +57,7 @@ class ColorService {
   Color get textFieldError => AppColors.red400;
   Color get textFieldErrorText => AppColors.red400;
 
+  Color get grabber => AppColors.whiteAlpha60;
+
   Color get transparent => AppColors.transparent;
 }
