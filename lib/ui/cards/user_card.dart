@@ -34,21 +34,20 @@ class UserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = ColorService.instance;
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(32),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-        child: Container(
-          decoration: BoxDecoration(
-            color: colors.buttonSecondaryBackground,
-            borderRadius: BorderRadius.circular(32),
-          ),
-          padding: const EdgeInsets.all(20),
-          child: size == UserCardSize.compact
-              ? _buildCompactContent(colors)
-              : _buildExpandedContent(colors),
+    return Container(
+      height: size == UserCardSize.compact ? 150 : null,
+      decoration: BoxDecoration(
+        color: colors.buttonSecondaryBackground,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: colors.surfaceBorder,
+          width: 1,
         ),
       ),
+      padding: const EdgeInsets.all(20),
+      child: size == UserCardSize.compact
+          ? _buildCompactContent(colors)
+          : _buildExpandedContent(colors),
     );
   }
 
@@ -57,10 +56,13 @@ class UserCard extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: AppFonts.bodyMedium.copyWith(
-            color: colors.textPrimary,
+        Expanded(
+          child: Text(
+            title,
+            style: AppFonts.bodyMedium.copyWith(
+              color: colors.textPrimary,
+              height: 20 / 14,
+            ),
           ),
         ),
         const SizedBox(height: 8),
@@ -131,8 +133,8 @@ class UserCard extends StatelessWidget {
       return ClipOval(
         child: Image.network(
           avatarUrl!,
-          width: 36,
-          height: 36,
+          width: 46,
+          height: 46,
           fit: BoxFit.cover,
           errorBuilder: (context, error, stackTrace) {
             return _buildDefaultAvatar(colors);
@@ -146,10 +148,14 @@ class UserCard extends StatelessWidget {
 
   Widget _buildDefaultAvatar(ColorService colors) {
     return Container(
-      width: 36,
-      height: 36,
+      width: 46,
+      height: 46,
       decoration: BoxDecoration(
-        color: colors.buttonSecondaryBackground,
+        color: colors.surfaceElevated,
+        border: Border.all(
+          color: colors.surfaceBorder,
+          width: 1,
+        ),
         shape: BoxShape.circle,
       ),
       child: Icon(

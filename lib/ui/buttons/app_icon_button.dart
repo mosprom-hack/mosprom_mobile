@@ -27,8 +27,8 @@ class AppIconButton extends StatelessWidget {
 
     if (type == AppIconButtonType.secondary && variant == AppButtonVariant.filled) {
       return SizedBox(
-        width: _getSize(),
-        height: _getSize(),
+        width: _getWidth(),
+        height: _getHeight(),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(32),
           child: BackdropFilter(
@@ -48,8 +48,8 @@ class AppIconButton extends StatelessWidget {
     }
 
     return SizedBox(
-      width: _getSize(),
-      height: _getSize(),
+      width: _getWidth(),
+      height: _getHeight(),
       child: Container(
         decoration: BoxDecoration(
           color: _getBackgroundColor(colors, isDisabled),
@@ -81,12 +81,25 @@ class AppIconButton extends StatelessWidget {
     );
   }
 
-  double _getSize() {
+  double _getWidth() {
     switch (size) {
       case AppButtonSize.sm:
         return 32;
       case AppButtonSize.md:
-        return 40;
+        return 42;
+      case AppButtonSize.lg:
+        return 56;
+      case AppButtonSize.xl:
+        return 56;
+    }
+  }
+
+  double _getHeight() {
+    switch (size) {
+      case AppButtonSize.sm:
+        return 32;
+      case AppButtonSize.md:
+        return 36;
       case AppButtonSize.lg:
         return 48;
       case AppButtonSize.xl:
@@ -99,7 +112,7 @@ class AppIconButton extends StatelessWidget {
       case AppButtonSize.sm:
         return 16;
       case AppButtonSize.md:
-        return 20;
+        return 16;
       case AppButtonSize.lg:
         return 24;
       case AppButtonSize.xl:

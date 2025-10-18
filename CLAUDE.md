@@ -119,6 +119,60 @@ lib/
 - **All color references in widgets and pages must use ColorService**
 - Example pattern: `ColorService.instance.text` instead of direct color values or color names
 
+## Using Existing UI Components
+
+### CRITICAL RULE: Always Use Project's Custom UI Components
+
+**MANDATORY**: Before adding ANY UI element, you MUST check if a custom component already exists in the project.
+
+### Where to Look for Existing Components
+1. **`ui/` folder** - Contains all reusable UI components (buttons, text fields, cards, etc.)
+2. **`presentation/widgets/` folder** - Contains feature-specific reusable widgets
+
+### Component Search Process (REQUIRED)
+
+**Before writing ANY UI widget**, follow this mandatory checklist:
+
+1. ✅ Check `ui/` subfolders for other UI elements
+2. ✅ Check `presentation/widgets/` for reusable widgets
+3. ✅ If found - USE THE EXISTING COMPONENT
+4. ✅ If not found - only then create a new component / call system component.
+
+### Component Replacement Rules
+
+When implementing ANY feature:
+
+1. **Buttons**: Never use `TextButton`, `ElevatedButton`, `OutlinedButton`, `IconButton` - always check `ui/buttons/` first
+2. **Text Fields**: Never use `TextField`, `TextFormField` - always check `ui/text_fields/` first
+3. **Cards**: Never create custom `Card` widgets - check `ui/` and `presentation/widgets/` first
+4. **Containers**: Check if styled containers already exist before creating new ones
+5. **Lists**: Check if list items/tiles already exist before creating new ones
+
+### When You Find an Existing Component
+
+1. **Use it as-is** if it fits your needs
+2. **Extend it** if it needs minor modifications (add parameters, not new widgets)
+3. **Consult** before creating alternatives - maybe the existing component should be enhanced instead
+
+### Component Discovery is NOT Optional
+
+This is a **mandatory workflow step**, not a suggestion:
+
+```
+REQUIRED WORKFLOW:
+1. Understand the UI requirement
+2. → SEARCH for existing components (ui/, presentation/widgets/)
+3. → IF found: Use existing component
+4. → IF not found: Create new component following project standards
+5. Implement the feature
+```
+
+**Failure to follow this workflow results in:**
+- ❌ Code duplication
+- ❌ Inconsistent UI across the app
+- ❌ Technical debt
+- ❌ Wasted development time
+
 ## Working with Figma MCP Server
 
 When using Figma MCP server to generate UI components:
@@ -135,13 +189,14 @@ When using Figma MCP server to generate UI components:
 
 ### Workflow with Figma
 1. Get design from Figma MCP server
-2. Analyze existing UI components in the project
+2. **MANDATORY**: Analyze existing UI components in the project (ui/, presentation/widgets/)
 3. Identify reusable elements
-4. Adapt generated code to project standards
-5. Integrate with existing design system (ColorService, AppFonts, flutter_lucide)
-6. Ensure responsive and adaptive implementation
+4. Replace Figma's standard widgets with project's custom components
+5. Adapt remaining code to project standards
+6. Integrate with existing design system (ColorService, AppFonts, flutter_lucide)
+7. Ensure responsive and adaptive implementation
 
-**Remember**: Figma output is a starting point, not a final solution. Always refactor to match project architecture and standards.
+**Remember**: Figma output is a starting point, not a final solution. Always refactor to match project architecture and standards. **ALWAYS replace standard Flutter widgets with project's custom components.**
 
 ## Code Style
 
@@ -159,11 +214,15 @@ When using Figma MCP server to generate UI components:
 4. ❌ **DO NOT** use color names in ColorService (use semantic names like `text`, `background`, `primary`)
 5. ❌ **DO NOT** leave comments in the code
 6. ❌ **DO NOT** blindly copy Figma-generated code without adaptation
-7. ✅ **ALWAYS** use relative imports when importing local files
-8. ✅ **ALWAYS** name pages with `_page.dart` suffix
-9. ✅ **ALWAYS** place BLoCs in a `blocs/` folder at the same level as their page
-10. ✅ **ALWAYS** check for existing UI components before creating new ones
-11. ✅ **ALWAYS** adapt Figma designs to project context and standards
+7. ❌ **DO NOT** use standard Flutter UI widgets (TextButton, ElevatedButton, TextField, etc.) without first checking if custom components exist
+8. ❌ **DO NOT** create new UI components without checking ui/ and presentation/widgets/ folders first
+9. ❌ **DO NOT** skip the component discovery step - it is MANDATORY
+10. ✅ **ALWAYS** use relative imports when importing local files
+11. ✅ **ALWAYS** name pages with `_page.dart` suffix
+12. ✅ **ALWAYS** place BLoCs in a `blocs/` folder at the same level as their page
+13. ✅ **ALWAYS** check ui/ and presentation/widgets/ folders before adding ANY UI element
+14. ✅ **ALWAYS** use existing custom components instead of standard Flutter widgets
+15. ✅ **ALWAYS** adapt Figma designs to use project's custom components
 
 ## Application Domain Context
 
