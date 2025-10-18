@@ -41,6 +41,8 @@ class ColorService {
   Color get tabInactiveText => AppColors.whiteAlpha50;
   Color get tabActiveBackground => AppColors.whiteAlpha05;
   Color get tabActiveText => AppColors.white;
+  Color get tabContainerBackground => AppColors.whiteAlpha02;
+  Color get tabFilledActiveBackground => AppColors.purple500;
 
   Color get transparent => AppColors.transparent;
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/services/color_service.dart';
+import 'app_tabs_variant.dart';
 
 class AppTab extends StatelessWidget {
   final String text;
@@ -8,6 +9,7 @@ class AppTab extends StatelessWidget {
   final bool isActive;
   final VoidCallback? onTap;
   final Color? activeColor;
+  final AppTabsVariant variant;
 
   const AppTab({
     super.key,
@@ -16,6 +18,7 @@ class AppTab extends StatelessWidget {
     required this.isActive,
     this.onTap,
     this.activeColor,
+    this.variant = AppTabsVariant.defaultVariant,
   });
 
   @override
@@ -29,7 +32,7 @@ class AppTab extends StatelessWidget {
         curve: Curves.easeInOut,
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: isActive ? colors.tabActiveBackground : colors.transparent,
+          color: _getBackgroundColor(colors),
           borderRadius: BorderRadius.circular(100),
         ),
         child: Row(
@@ -56,9 +59,20 @@ class AppTab extends StatelessWidget {
     );
   }
 
+  Color _getBackgroundColor(ColorService colors) {
+    if (!isActive) return colors.transparent;
+
+    switch (variant) {
+      case AppTabsVariant.defaultVariant:
+        return colors.tabActiveBackground;
+      case AppTabsVariant.filled:
+        return activeColor ?? colors.tabFilledActiveBackground;
+    }
+  }
+
   Color _getTextColor(ColorService colors) {
     if (isActive) {
-      return activeColor ?? colors.tabActiveText;
+      return colors.tabActiveText;
     }
     return colors.tabInactiveText;
   }
