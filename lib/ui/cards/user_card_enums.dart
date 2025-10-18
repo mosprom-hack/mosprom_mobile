@@ -1,0 +1,4 @@
+enum UserCardSize {
+  compact,
+  expanded,
+}
