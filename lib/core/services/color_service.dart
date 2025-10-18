@@ -38,5 +38,9 @@ class ColorService {
   Color get buttonDisabledText => AppColors.whiteAlpha10;
   Color get buttonDisabledBackground => AppColors.whiteAlpha05;
 
+  Color get tabInactiveText => AppColors.whiteAlpha50;
+  Color get tabActiveBackground => AppColors.whiteAlpha05;
+  Color get tabActiveText => AppColors.white;
+
   Color get transparent => AppColors.transparent;
 }
