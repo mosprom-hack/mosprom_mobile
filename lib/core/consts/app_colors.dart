@@ -1,47 +1,51 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  static const Color lightPrimary = Color(0xFF2196F3);
-  static const Color lightPrimaryVariant = Color(0xFF1976D2);
-  static const Color lightSecondary = Color(0xFFFF9800);
-  static const Color lightSecondaryVariant = Color(0xFFF57C00);
-  static const Color lightBackground = Color(0xFFFFFFFF);
-  static const Color lightSurface = Color(0xFFF5F5F5);
-  static const Color lightError = Color(0xFFD32F2F);
-  static const Color lightOnPrimary = Color(0xFFFFFFFF);
-  static const Color lightOnSecondary = Color(0xFF000000);
-  static const Color lightOnBackground = Color(0xFF000000);
-  static const Color lightOnSurface = Color(0xFF000000);
-  static const Color lightOnError = Color(0xFFFFFFFF);
+  static const Color background = Color(0xFF090909);
 
-  static const Color lightTextPrimary = Color(0xFF212121);
-  static const Color lightTextSecondary = Color(0xFF757575);
-  static const Color lightTextHint = Color(0xFFBDBDBD);
+  static const Color text = Color(0xFFFFFFFF);
+  static const Color text90 = Color(0xE6FFFFFF);
+  static const Color text80 = Color(0xCCFFFFFF);
+  static const Color text70 = Color(0xB3FFFFFF);
+  static const Color text60 = Color(0x99FFFFFF);
+  static const Color text50 = Color(0x80FFFFFF);
+  static const Color text40 = Color(0x66FFFFFF);
+  static const Color text30 = Color(0x4DFFFFFF);
+  static const Color text20 = Color(0x33FFFFFF);
+  static const Color text10 = Color(0x1AFFFFFF);
 
-  static const Color lightDivider = Color(0xFFE0E0E0);
+  static const Color purple50 = Color(0xFFEEEDFF);
+  static const Color purple100 = Color(0xFFC9C8FF);
+  static const Color purple200 = Color(0xFFAFAEFF);
+  static const Color purple300 = Color(0xFF8B89FF);
+  static const Color purple400 = Color(0xFF7572FF);
+  static const Color purple500 = Color(0xFF524FFF);
+  static const Color purple600 = Color(0xFF4B48E8);
+  static const Color purple700 = Color(0xFF3A38B5);
+  static const Color purple800 = Color(0xFF2D2B8C);
+  static const Color purple900 = Color(0xFF22216B);
 
-  static const Color darkPrimary = Color(0xFF42A5F5);
-  static const Color darkPrimaryVariant = Color(0xFF1E88E5);
-  static const Color darkSecondary = Color(0xFFFFB74D);
-  static const Color darkSecondaryVariant = Color(0xFFFFA726);
-  static const Color darkBackground = Color(0xFF121212);
-  static const Color darkSurface = Color(0xFF1E1E1E);
-  static const Color darkError = Color(0xFFEF5350);
-  static const Color darkOnPrimary = Color(0xFF000000);
-  static const Color darkOnSecondary = Color(0xFF000000);
-  static const Color darkOnBackground = Color(0xFFFFFFFF);
-  static const Color darkOnSurface = Color(0xFFFFFFFF);
-  static const Color darkOnError = Color(0xFF000000);
+  static const Color neon50 = Color(0xFFFCFEEB);
+  static const Color neon100 = Color(0xFFF6FCC0);
+  static const Color neon200 = Color(0xFFF2FAA2);
+  static const Color neon300 = Color(0xFFECF878);
+  static const Color neon400 = Color(0xFFE8F75D);
+  static const Color neon500 = Color(0xFFE2F535);
+  static const Color neon600 = Color(0xFFCEDF30);
+  static const Color neon700 = Color(0xFFA0AE26);
+  static const Color neon800 = Color(0xFF7C871D);
+  static const Color neon900 = Color(0xFF5F6716);
 
-  static const Color darkTextPrimary = Color(0xFFFFFFFF);
-  static const Color darkTextSecondary = Color(0xFFB0B0B0);
-  static const Color darkTextHint = Color(0xFF616161);
-
-  static const Color darkDivider = Color(0xFF424242);
-
-  static const Color success = Color(0xFF4CAF50);
-  static const Color warning = Color(0xFFFFC107);
-  static const Color info = Color(0xFF2196F3);
+  static const Color red50 = Color(0xFFFFEAEA);
+  static const Color red100 = Color(0xFFFDBDBD);
+  static const Color red200 = Color(0xFFFD9D9D);
+  static const Color red300 = Color(0xFFFC7070);
+  static const Color red400 = Color(0xFFFB5454);
+  static const Color red500 = Color(0xFFFA2929);
+  static const Color red600 = Color(0xFFE42525);
+  static const Color red700 = Color(0xFFB21D1D);
+  static const Color red800 = Color(0xFF8A1717);
+  static const Color red900 = Color(0xFF691111);
 
   static const Color transparent = Colors.transparent;
 }

@@ -16,6 +16,7 @@ The project targets Android and iOS platforms exclusively.
 - **HTTP Client**: dio
 - **Dependency Injection**: get_it (GetIt injector)
 - **Navigation**: go_router
+- **Icons**: flutter_lucide
 
 ## Development Workflow
 
@@ -24,7 +25,7 @@ When working on a task, follow this sequence:
 1. **Dependencies** - Install/update project dependencies
 2. **Code Work** - Implement the required changes
 3. **Analysis** - Run static code analysis
-4. **Hot Restart** - Apply changes (only if the app is already running; skip if not running)
+4. **Hot Reload** - Apply changes (only if the app is already running; skip if not running)
 
 ## Developer Commands
 
@@ -60,10 +61,9 @@ lib/
 │   ├── router/            # go_router configuration
 │   └── services/          # App-wide services
 ├── core/                   # Core utilities and constants
-│   ├── consts/            # Constants (AppColors, AppFonts, AppIcons)
+│   ├── consts/            # Constants (AppColors, AppFonts)
 │   │   ├── app_colors.dart
 │   │   ├── app_fonts.dart
-│   │   └── app_icons.dart
 │   ├── di/                # Dependency injection setup
 │   └── services/          # Core services (ColorService, etc.)
 ├── domain/                 # Business logic layer
@@ -107,9 +107,9 @@ lib/
 - Contains all font family definitions and text styles
 - **All text styling must reference AppFonts**
 
-### AppIcons (`core/consts/app_icons.dart`)
-- Defines all icon assets and icon data
-- **All icons must be referenced through AppIcons**
+### Icons (`flutter_lucide`)
+- Lib with all icon assets and icon data
+- **All icons must be referenced through flutter_lucide**
 
 ### ColorService (`core/services/color_service.dart`)
 - Service that manages color selection based on current theme (light/dark)
@@ -128,7 +128,7 @@ lib/
 ## Strict Rules
 
 1. ❌ **DO NOT** use fonts outside of AppFonts
-2. ❌ **DO NOT** use icons outside of AppIcons
+2. ❌ **DO NOT** use icons outside of flutter_lucide
 3. ❌ **DO NOT** use colors outside of ColorService
 4. ❌ **DO NOT** leave comments in the code
 5. ✅ **ALWAYS** use relative imports when importing local files

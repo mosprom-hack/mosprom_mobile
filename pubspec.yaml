@@ -9,21 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  # State Management
   flutter_bloc: ^8.1.6
   equatable: ^2.0.7
-
-  # Navigation
   go_router: ^14.6.2
-
-  # Dependency Injection
   get_it: ^8.0.2
-
-  # HTTP Client
   dio: ^5.7.0
-
-  # Code Generation
   freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
 
@@ -31,11 +21,43 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-
-  # Code Generation
   build_runner: ^2.4.13
   freezed: ^2.5.7
   json_serializable: ^6.8.0
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: SF Pro Text
+      fonts:
+        - asset: assets/fonts/sfpro/SFProText-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/sfpro/SFProText-RegularItalic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/sfpro/SFProText-Light.ttf
+          weight: 300
+        - asset: assets/fonts/sfpro/SFProText-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/sfpro/SFProText-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/sfpro/SFProText-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/sfpro/SFProText-Semibold.ttf
+          weight: 600
+        - asset: assets/fonts/sfpro/SFProText-SemiboldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/sfpro/SFProText-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/sfpro/SFProText-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/sfpro/SFProText-Heavy.ttf
+          weight: 800
+        - asset: assets/fonts/sfpro/SFProText-HeavyItalic.ttf
+          weight: 800
+          style: italic

@@ -12,36 +12,8 @@ void main() async {
   runApp(const MainApp());
 }
 
-class MainApp extends StatefulWidget {
+class MainApp extends StatelessWidget {
   const MainApp({super.key});
-
-  @override
-  State<MainApp> createState() => _MainAppState();
-}
-
-class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-
-    final brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
-    ColorService.instance.updateFromBrightness(brightness);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangePlatformBrightness() {
-    super.didChangePlatformBrightness();
-    final brightness = WidgetsBinding.instance.platformDispatcher.platformBrightness;
-    ColorService.instance.updateFromBrightness(brightness);
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,108 +21,64 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
       title: 'моспром',
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
-      theme: _buildLightTheme(),
-      darkTheme: _buildDarkTheme(),
-      themeMode: ThemeMode.system,
-    );
-  }
-
-  ThemeData _buildLightTheme() {
-    final colorScheme = ColorService.instance.getColorScheme();
-
-    return ThemeData(
-      useMaterial3: true,
-      colorScheme: colorScheme,
-      fontFamily: AppFonts.primaryFont,
-      scaffoldBackgroundColor: colorScheme.surface,
-      appBarTheme: AppBarTheme(
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: colorScheme.surface,
-        foregroundColor: colorScheme.onSurface,
-        titleTextStyle: AppFonts.h5.copyWith(
-          color: colorScheme.onSurface,
-        ),
-      ),
-      textTheme: TextTheme(
-        displayLarge: AppFonts.h1,
-        displayMedium: AppFonts.h2,
-        displaySmall: AppFonts.h3,
-        headlineLarge: AppFonts.h4,
-        headlineMedium: AppFonts.h5,
-        headlineSmall: AppFonts.h6,
-        bodyLarge: AppFonts.bodyLarge,
-        bodyMedium: AppFonts.bodyMedium,
-        bodySmall: AppFonts.bodySmall,
-        labelLarge: AppFonts.labelLarge,
-        labelMedium: AppFonts.labelMedium,
-        labelSmall: AppFonts.labelSmall,
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          textStyle: AppFonts.buttonMedium,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      ),
+      theme: _buildDarkTheme(),
+      themeMode: ThemeMode.dark,
     );
   }
 
   ThemeData _buildDarkTheme() {
-    ColorService.instance.setThemeMode(true);
-    final colorScheme = ColorService.instance.getColorScheme();
-    ColorService.instance.setThemeMode(false);
+    final colors = ColorService.instance;
+
+    final colorScheme = ColorScheme.dark(
+      primary: colors.purple500,
+      secondary: colors.neon500,
+      error: colors.red500,
+      surface: colors.background,
+      onPrimary: colors.text,
+      onSecondary: colors.background,
+      onError: colors.text,
+      onSurface: colors.text,
+    );
 
     return ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
-      fontFamily: AppFonts.primaryFont,
-      scaffoldBackgroundColor: colorScheme.surface,
+      fontFamily: AppFonts.sfpro,
+      scaffoldBackgroundColor: colors.background,
       appBarTheme: AppBarTheme(
         centerTitle: true,
         elevation: 0,
-        backgroundColor: colorScheme.surface,
-        foregroundColor: colorScheme.onSurface,
-        titleTextStyle: AppFonts.h5.copyWith(
-          color: colorScheme.onSurface,
-        ),
+        backgroundColor: colors.background,
+        foregroundColor: colors.text,
+        titleTextStyle: AppFonts.h5.copyWith(color: colors.text),
       ),
       textTheme: TextTheme(
-        displayLarge: AppFonts.h1,
-        displayMedium: AppFonts.h2,
-        displaySmall: AppFonts.h3,
-        headlineLarge: AppFonts.h4,
-        headlineMedium: AppFonts.h5,
-        headlineSmall: AppFonts.h6,
-        bodyLarge: AppFonts.bodyLarge,
-        bodyMedium: AppFonts.bodyMedium,
-        bodySmall: AppFonts.bodySmall,
-        labelLarge: AppFonts.labelLarge,
-        labelMedium: AppFonts.labelMedium,
-        labelSmall: AppFonts.labelSmall,
+        displayLarge: AppFonts.h1.copyWith(color: colors.text),
+        displayMedium: AppFonts.h2.copyWith(color: colors.text),
+        displaySmall: AppFonts.h3.copyWith(color: colors.text),
+        headlineLarge: AppFonts.h4.copyWith(color: colors.text),
+        headlineMedium: AppFonts.h5.copyWith(color: colors.text),
+        headlineSmall: AppFonts.h6.copyWith(color: colors.text),
+        bodyLarge: AppFonts.bodyLarge.copyWith(color: colors.text),
+        bodyMedium: AppFonts.bodyMedium.copyWith(color: colors.text),
+        bodySmall: AppFonts.bodySmall.copyWith(color: colors.text),
+        labelLarge: AppFonts.labelLarge.copyWith(color: colors.text),
+        labelMedium: AppFonts.labelMedium.copyWith(color: colors.text),
+        labelSmall: AppFonts.labelSmall.copyWith(color: colors.text),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           textStyle: AppFonts.buttonMedium,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 12,
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       ),
     );
   }
