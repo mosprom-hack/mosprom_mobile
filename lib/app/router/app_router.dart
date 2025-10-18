@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../presentation/pages/home/home_page.dart';
 
 class AppRouter {
   AppRouter._();
@@ -11,26 +12,11 @@ class AppRouter {
       GoRoute(
         path: '/',
         name: 'home',
-        builder: (context, state) => const _HomePage(),
+        builder: (context, state) => const HomePage(),
       ),
     ],
     errorBuilder: (context, state) => _ErrorPage(error: state.error),
   );
-}
-class _HomePage extends StatelessWidget {
-  const _HomePage();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('моспром'),
-      ),
-      body: const Center(
-        child: Text('Home Page - Ready for development!'),
-      ),
-    );
-  }
 }
 
 class _ErrorPage extends StatelessWidget {

@@ -30,14 +30,14 @@ class MainApp extends StatelessWidget {
     final colors = ColorService.instance;
 
     final colorScheme = ColorScheme.dark(
-      primary: colors.purple500,
-      secondary: colors.neon500,
-      error: colors.red500,
+      primary: colors.primary,
+      secondary: colors.secondary,
+      error: colors.error,
       surface: colors.background,
-      onPrimary: colors.text,
+      onPrimary: colors.textPrimary,
       onSecondary: colors.background,
-      onError: colors.text,
-      onSurface: colors.text,
+      onError: colors.textPrimary,
+      onSurface: colors.textPrimary,
     );
 
     return ThemeData(
@@ -49,22 +49,22 @@ class MainApp extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         backgroundColor: colors.background,
-        foregroundColor: colors.text,
-        titleTextStyle: AppFonts.h5.copyWith(color: colors.text),
+        foregroundColor: colors.textPrimary,
+        titleTextStyle: AppFonts.h5.copyWith(color: colors.textPrimary),
       ),
       textTheme: TextTheme(
-        displayLarge: AppFonts.h1.copyWith(color: colors.text),
-        displayMedium: AppFonts.h2.copyWith(color: colors.text),
-        displaySmall: AppFonts.h3.copyWith(color: colors.text),
-        headlineLarge: AppFonts.h4.copyWith(color: colors.text),
-        headlineMedium: AppFonts.h5.copyWith(color: colors.text),
-        headlineSmall: AppFonts.h6.copyWith(color: colors.text),
-        bodyLarge: AppFonts.bodyLarge.copyWith(color: colors.text),
-        bodyMedium: AppFonts.bodyMedium.copyWith(color: colors.text),
-        bodySmall: AppFonts.bodySmall.copyWith(color: colors.text),
-        labelLarge: AppFonts.labelLarge.copyWith(color: colors.text),
-        labelMedium: AppFonts.labelMedium.copyWith(color: colors.text),
-        labelSmall: AppFonts.labelSmall.copyWith(color: colors.text),
+        displayLarge: AppFonts.h1.copyWith(color: colors.textPrimary),
+        displayMedium: AppFonts.h2.copyWith(color: colors.textPrimary),
+        displaySmall: AppFonts.h3.copyWith(color: colors.textPrimary),
+        headlineLarge: AppFonts.h4.copyWith(color: colors.textPrimary),
+        headlineMedium: AppFonts.h5.copyWith(color: colors.textPrimary),
+        headlineSmall: AppFonts.h6.copyWith(color: colors.textPrimary),
+        bodyLarge: AppFonts.bodyLarge.copyWith(color: colors.textPrimary),
+        bodyMedium: AppFonts.bodyMedium.copyWith(color: colors.textPrimary),
+        bodySmall: AppFonts.bodySmall.copyWith(color: colors.textPrimary),
+        labelLarge: AppFonts.labelLarge.copyWith(color: colors.textPrimary),
+        labelMedium: AppFonts.labelMedium.copyWith(color: colors.textPrimary),
+        labelSmall: AppFonts.labelSmall.copyWith(color: colors.textPrimary),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(

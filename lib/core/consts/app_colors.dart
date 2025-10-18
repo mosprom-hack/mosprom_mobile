@@ -3,16 +3,19 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   static const Color background = Color(0xFF090909);
 
-  static const Color text = Color(0xFFFFFFFF);
-  static const Color text90 = Color(0xE6FFFFFF);
-  static const Color text80 = Color(0xCCFFFFFF);
-  static const Color text70 = Color(0xB3FFFFFF);
-  static const Color text60 = Color(0x99FFFFFF);
-  static const Color text50 = Color(0x80FFFFFF);
-  static const Color text40 = Color(0x66FFFFFF);
-  static const Color text30 = Color(0x4DFFFFFF);
-  static const Color text20 = Color(0x33FFFFFF);
-  static const Color text10 = Color(0x1AFFFFFF);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color whiteAlpha90 = Color(0xE6FFFFFF);
+  static const Color whiteAlpha80 = Color(0xCCFFFFFF);
+  static const Color whiteAlpha70 = Color(0xB3FFFFFF);
+  static const Color whiteAlpha60 = Color(0x99FFFFFF);
+  static const Color whiteAlpha50 = Color(0x80FFFFFF);
+  static const Color whiteAlpha40 = Color(0x66FFFFFF);
+  static const Color whiteAlpha30 = Color(0x4DFFFFFF);
+  static const Color whiteAlpha20 = Color(0x33FFFFFF);
+  static const Color whiteAlpha10 = Color(0x1AFFFFFF);
+  static const Color whiteAlpha05 = Color(0x0DFFFFFF);
+  static const Color whiteAlpha02 = Color(0x05FFFFFF);
+  static const Color whiteAlpha01 = Color(0x03FFFFFF);
 
   static const Color purple50 = Color(0xFFEEEDFF);
   static const Color purple100 = Color(0xFFC9C8FF);
