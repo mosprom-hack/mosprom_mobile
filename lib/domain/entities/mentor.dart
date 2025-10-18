@@ -1,40 +1,23 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Mentor extends Equatable {
-  final String id;
-  final String firstName;
-  final String lastName;
-  final String? avatarUrl;
-  final String? specialization;
-  final String? bio;
-  final String? aboutMe;
-  final String? helpWith;
-  final String? experience;
+part 'mentor.freezed.dart';
 
-  const Mentor({
-    required this.id,
-    required this.firstName,
-    required this.lastName,
-    this.avatarUrl,
-    this.specialization,
-    this.bio,
-    this.aboutMe,
-    this.helpWith,
-    this.experience,
-  });
+@freezed
+class Mentor with _$Mentor {
+  const Mentor._();
+
+  const factory Mentor({
+    required String id,
+    required String firstName,
+    required String lastName,
+    String? avatarUrl,
+    String? specialization,
+    String? aboutMe,
+    String? helpWith,
+    String? experience,
+  }) = _Mentor;
 
   String get fullName => '$firstName $lastName';
 
-  @override
-  List<Object?> get props => [
-        id,
-        firstName,
-        lastName,
-        avatarUrl,
-        specialization,
-        bio,
-        aboutMe,
-        helpWith,
-        experience,
-      ];
+  String get fullNameMultiline => '$firstName\n$lastName';
 }

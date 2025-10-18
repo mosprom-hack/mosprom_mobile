@@ -18,10 +18,7 @@ import 'blocs/mentor_detail_state.dart';
 class MentorDetailPage extends StatelessWidget {
   final String mentorId;
 
-  const MentorDetailPage({
-    super.key,
-    required this.mentorId,
-  });
+  const MentorDetailPage({super.key, required this.mentorId});
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +43,7 @@ class _MentorDetailPageContent extends StatelessWidget {
         child: BlocBuilder<MentorDetailBloc, MentorDetailState>(
           builder: (context, state) {
             if (state is MentorDetailLoading) {
-              return const Center(
-                child: CupertinoActivityIndicator(),
-              );
+              return const Center(child: CupertinoActivityIndicator());
             }
 
             if (state is MentorDetailError) {
@@ -140,33 +135,31 @@ class _MentorDetailPageContent extends StatelessWidget {
                         children: [
                           if (mentor.avatarUrl != null &&
                               mentor.avatarUrl!.isNotEmpty)
-                            Center(
-                              child: Container(
-                                width: 128,
-                                height: 128,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(24),
-                                  border: Border.all(
-                                    color: colors.surfaceBorder,
-                                    width: 1,
-                                  ),
+                            Container(
+                              width: 128,
+                              height: 128,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(24),
+                                border: Border.all(
+                                  color: colors.surfaceBorder,
+                                  width: 1,
                                 ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(24),
-                                  child: Image.network(
-                                    mentor.avatarUrl!,
-                                    fit: BoxFit.cover,
-                                    errorBuilder: (context, error, stackTrace) {
-                                      return Container(
-                                        color: colors.surfaceElevated,
-                                        child: Icon(
-                                          LucideIcons.user_round,
-                                          size: 48,
-                                          color: colors.tabInactiveText,
-                                        ),
-                                      );
-                                    },
-                                  ),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(24),
+                                child: Image.network(
+                                  mentor.avatarUrl!,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Container(
+                                      color: colors.surfaceElevated,
+                                      child: Icon(
+                                        LucideIcons.user_round,
+                                        size: 48,
+                                        color: colors.tabInactiveText,
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             ),
@@ -206,9 +199,9 @@ class _MentorDetailPageContent extends StatelessWidget {
                                     isActive: state.currentTabIndex == 0,
                                     variant: AppTabsVariant.filled,
                                     onTap: () {
-                                      context
-                                          .read<MentorDetailBloc>()
-                                          .add(const ChangeTabEvent(0));
+                                      context.read<MentorDetailBloc>().add(
+                                        const ChangeTabEvent(0),
+                                      );
                                     },
                                   ),
                                 ),
@@ -219,9 +212,9 @@ class _MentorDetailPageContent extends StatelessWidget {
                                     isActive: state.currentTabIndex == 1,
                                     variant: AppTabsVariant.filled,
                                     onTap: () {
-                                      context
-                                          .read<MentorDetailBloc>()
-                                          .add(const ChangeTabEvent(1));
+                                      context.read<MentorDetailBloc>().add(
+                                        const ChangeTabEvent(1),
+                                      );
                                     },
                                   ),
                                 ),
@@ -232,9 +225,9 @@ class _MentorDetailPageContent extends StatelessWidget {
                                     isActive: state.currentTabIndex == 2,
                                     variant: AppTabsVariant.filled,
                                     onTap: () {
-                                      context
-                                          .read<MentorDetailBloc>()
-                                          .add(const ChangeTabEvent(2));
+                                      context.read<MentorDetailBloc>().add(
+                                        const ChangeTabEvent(2),
+                                      );
                                     },
                                   ),
                                 ),
@@ -242,7 +235,11 @@ class _MentorDetailPageContent extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          _buildTabContent(state.currentTabIndex, mentor, colors),
+                          _buildTabContent(
+                            state.currentTabIndex,
+                            mentor,
+                            colors,
+                          ),
                           const SizedBox(height: 24),
                         ],
                       ),
@@ -259,8 +256,7 @@ class _MentorDetailPageContent extends StatelessWidget {
     );
   }
 
-  Widget _buildTabContent(
-      int tabIndex, dynamic mentor, ColorService colors) {
+  Widget _buildTabContent(int tabIndex, dynamic mentor, ColorService colors) {
     String? content;
 
     switch (tabIndex) {
@@ -278,9 +274,7 @@ class _MentorDetailPageContent extends StatelessWidget {
     if (content == null || content.isEmpty) {
       return Text(
         'Информация отсутствует',
-        style: AppFonts.bodyMedium.copyWith(
-          color: colors.textSecondary,
-        ),
+        style: AppFonts.bodyMedium.copyWith(color: colors.textSecondary),
       );
     }
 

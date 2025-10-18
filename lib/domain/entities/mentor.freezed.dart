@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'mentor_model.dart';
+part of 'mentor.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,38 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
   'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
 );
 
-MentorModel _$MentorModelFromJson(Map<String, dynamic> json) {
-  return _MentorModel.fromJson(json);
-}
-
 /// @nodoc
-mixin _$MentorModel {
+mixin _$Mentor {
   String get id => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
   String? get specialization => throw _privateConstructorUsedError;
-  String? get bio => throw _privateConstructorUsedError;
   String? get aboutMe => throw _privateConstructorUsedError;
   String? get helpWith => throw _privateConstructorUsedError;
   String? get experience => throw _privateConstructorUsedError;
 
-  /// Serializes this MentorModel to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of MentorModel
+  /// Create a copy of Mentor
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MentorModelCopyWith<MentorModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MentorCopyWith<Mentor> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MentorModelCopyWith<$Res> {
-  factory $MentorModelCopyWith(
-    MentorModel value,
-    $Res Function(MentorModel) then,
-  ) = _$MentorModelCopyWithImpl<$Res, MentorModel>;
+abstract class $MentorCopyWith<$Res> {
+  factory $MentorCopyWith(Mentor value, $Res Function(Mentor) then) =
+      _$MentorCopyWithImpl<$Res, Mentor>;
   @useResult
   $Res call({
     String id,
@@ -54,7 +43,6 @@ abstract class $MentorModelCopyWith<$Res> {
     String lastName,
     String? avatarUrl,
     String? specialization,
-    String? bio,
     String? aboutMe,
     String? helpWith,
     String? experience,
@@ -62,16 +50,16 @@ abstract class $MentorModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MentorModelCopyWithImpl<$Res, $Val extends MentorModel>
-    implements $MentorModelCopyWith<$Res> {
-  _$MentorModelCopyWithImpl(this._value, this._then);
+class _$MentorCopyWithImpl<$Res, $Val extends Mentor>
+    implements $MentorCopyWith<$Res> {
+  _$MentorCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MentorModel
+  /// Create a copy of Mentor
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -81,7 +69,6 @@ class _$MentorModelCopyWithImpl<$Res, $Val extends MentorModel>
     Object? lastName = null,
     Object? avatarUrl = freezed,
     Object? specialization = freezed,
-    Object? bio = freezed,
     Object? aboutMe = freezed,
     Object? helpWith = freezed,
     Object? experience = freezed,
@@ -108,10 +95,6 @@ class _$MentorModelCopyWithImpl<$Res, $Val extends MentorModel>
                 ? _value.specialization
                 : specialization // ignore: cast_nullable_to_non_nullable
                       as String?,
-            bio: freezed == bio
-                ? _value.bio
-                : bio // ignore: cast_nullable_to_non_nullable
-                      as String?,
             aboutMe: freezed == aboutMe
                 ? _value.aboutMe
                 : aboutMe // ignore: cast_nullable_to_non_nullable
@@ -131,12 +114,11 @@ class _$MentorModelCopyWithImpl<$Res, $Val extends MentorModel>
 }
 
 /// @nodoc
-abstract class _$$MentorModelImplCopyWith<$Res>
-    implements $MentorModelCopyWith<$Res> {
-  factory _$$MentorModelImplCopyWith(
-    _$MentorModelImpl value,
-    $Res Function(_$MentorModelImpl) then,
-  ) = __$$MentorModelImplCopyWithImpl<$Res>;
+abstract class _$$MentorImplCopyWith<$Res> implements $MentorCopyWith<$Res> {
+  factory _$$MentorImplCopyWith(
+    _$MentorImpl value,
+    $Res Function(_$MentorImpl) then,
+  ) = __$$MentorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({
@@ -145,7 +127,6 @@ abstract class _$$MentorModelImplCopyWith<$Res>
     String lastName,
     String? avatarUrl,
     String? specialization,
-    String? bio,
     String? aboutMe,
     String? helpWith,
     String? experience,
@@ -153,15 +134,15 @@ abstract class _$$MentorModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MentorModelImplCopyWithImpl<$Res>
-    extends _$MentorModelCopyWithImpl<$Res, _$MentorModelImpl>
-    implements _$$MentorModelImplCopyWith<$Res> {
-  __$$MentorModelImplCopyWithImpl(
-    _$MentorModelImpl _value,
-    $Res Function(_$MentorModelImpl) _then,
+class __$$MentorImplCopyWithImpl<$Res>
+    extends _$MentorCopyWithImpl<$Res, _$MentorImpl>
+    implements _$$MentorImplCopyWith<$Res> {
+  __$$MentorImplCopyWithImpl(
+    _$MentorImpl _value,
+    $Res Function(_$MentorImpl) _then,
   ) : super(_value, _then);
 
-  /// Create a copy of MentorModel
+  /// Create a copy of Mentor
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -171,13 +152,12 @@ class __$$MentorModelImplCopyWithImpl<$Res>
     Object? lastName = null,
     Object? avatarUrl = freezed,
     Object? specialization = freezed,
-    Object? bio = freezed,
     Object? aboutMe = freezed,
     Object? helpWith = freezed,
     Object? experience = freezed,
   }) {
     return _then(
-      _$MentorModelImpl(
+      _$MentorImpl(
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
@@ -198,10 +178,6 @@ class __$$MentorModelImplCopyWithImpl<$Res>
             ? _value.specialization
             : specialization // ignore: cast_nullable_to_non_nullable
                   as String?,
-        bio: freezed == bio
-            ? _value.bio
-            : bio // ignore: cast_nullable_to_non_nullable
-                  as String?,
         aboutMe: freezed == aboutMe
             ? _value.aboutMe
             : aboutMe // ignore: cast_nullable_to_non_nullable
@@ -220,22 +196,18 @@ class __$$MentorModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$MentorModelImpl extends _MentorModel {
-  const _$MentorModelImpl({
+
+class _$MentorImpl extends _Mentor {
+  const _$MentorImpl({
     required this.id,
     required this.firstName,
     required this.lastName,
     this.avatarUrl,
     this.specialization,
-    this.bio,
     this.aboutMe,
     this.helpWith,
     this.experience,
   }) : super._();
-
-  factory _$MentorModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MentorModelImplFromJson(json);
 
   @override
   final String id;
@@ -248,8 +220,6 @@ class _$MentorModelImpl extends _MentorModel {
   @override
   final String? specialization;
   @override
-  final String? bio;
-  @override
   final String? aboutMe;
   @override
   final String? helpWith;
@@ -258,14 +228,14 @@ class _$MentorModelImpl extends _MentorModel {
 
   @override
   String toString() {
-    return 'MentorModel(id: $id, firstName: $firstName, lastName: $lastName, avatarUrl: $avatarUrl, specialization: $specialization, bio: $bio, aboutMe: $aboutMe, helpWith: $helpWith, experience: $experience)';
+    return 'Mentor(id: $id, firstName: $firstName, lastName: $lastName, avatarUrl: $avatarUrl, specialization: $specialization, aboutMe: $aboutMe, helpWith: $helpWith, experience: $experience)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MentorModelImpl &&
+            other is _$MentorImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
@@ -275,7 +245,6 @@ class _$MentorModelImpl extends _MentorModel {
                 other.avatarUrl == avatarUrl) &&
             (identical(other.specialization, specialization) ||
                 other.specialization == specialization) &&
-            (identical(other.bio, bio) || other.bio == bio) &&
             (identical(other.aboutMe, aboutMe) || other.aboutMe == aboutMe) &&
             (identical(other.helpWith, helpWith) ||
                 other.helpWith == helpWith) &&
@@ -283,7 +252,6 @@ class _$MentorModelImpl extends _MentorModel {
                 other.experience == experience));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
     runtimeType,
@@ -292,42 +260,32 @@ class _$MentorModelImpl extends _MentorModel {
     lastName,
     avatarUrl,
     specialization,
-    bio,
     aboutMe,
     helpWith,
     experience,
   );
 
-  /// Create a copy of MentorModel
+  /// Create a copy of Mentor
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$MentorModelImplCopyWith<_$MentorModelImpl> get copyWith =>
-      __$$MentorModelImplCopyWithImpl<_$MentorModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MentorModelImplToJson(this);
-  }
+  _$$MentorImplCopyWith<_$MentorImpl> get copyWith =>
+      __$$MentorImplCopyWithImpl<_$MentorImpl>(this, _$identity);
 }
 
-abstract class _MentorModel extends MentorModel {
-  const factory _MentorModel({
+abstract class _Mentor extends Mentor {
+  const factory _Mentor({
     required final String id,
     required final String firstName,
     required final String lastName,
     final String? avatarUrl,
     final String? specialization,
-    final String? bio,
     final String? aboutMe,
     final String? helpWith,
     final String? experience,
-  }) = _$MentorModelImpl;
-  const _MentorModel._() : super._();
-
-  factory _MentorModel.fromJson(Map<String, dynamic> json) =
-      _$MentorModelImpl.fromJson;
+  }) = _$MentorImpl;
+  const _Mentor._() : super._();
 
   @override
   String get id;
@@ -340,18 +298,16 @@ abstract class _MentorModel extends MentorModel {
   @override
   String? get specialization;
   @override
-  String? get bio;
-  @override
   String? get aboutMe;
   @override
   String? get helpWith;
   @override
   String? get experience;
 
-  /// Create a copy of MentorModel
+  /// Create a copy of Mentor
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MentorModelImplCopyWith<_$MentorModelImpl> get copyWith =>
+  _$$MentorImplCopyWith<_$MentorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -18,6 +18,59 @@ The project targets Android and iOS platforms exclusively.
 - **Navigation**: go_router
 - **Icons**: flutter_lucide
 
+## Backend Integration
+
+### API Documentation (Swagger)
+
+**CRITICAL**: All backend API endpoints, request/response models, and API contracts are documented in Swagger.
+
+### Swagger Documentation URL
+🔗 **https://mikron-back.onrender.com/api-docs/**
+
+### Working with Backend API
+
+**MANDATORY Rules**:
+
+1. ✅ **ALWAYS** check Swagger documentation before implementing any API integration
+2. ✅ **ALWAYS** verify endpoint paths, HTTP methods, and parameters in Swagger
+3. ✅ **ALWAYS** match request/response models to Swagger schemas
+4. ✅ **ALWAYS** check authentication requirements for each endpoint
+5. ✅ **ALWAYS** validate required and optional parameters according to Swagger specs
+
+### API Integration Workflow
+
+When implementing a new feature that requires backend integration:
+
+1. **Check Swagger First**: Open https://mikron-back.onrender.com/api-docs/ and find relevant endpoints
+2. **Analyze Endpoint**: Review:
+   - HTTP method (GET, POST, PUT, DELETE, etc.)
+   - Endpoint path and path parameters
+   - Query parameters
+   - Request body schema
+   - Response schema (success and error cases)
+   - Authentication requirements
+3. **Create Data Models**: Generate Dart models matching Swagger schemas (use freezed)
+4. **Implement Data Source**: Create API methods in datasources using dio
+5. **Test Integration**: Verify requests/responses match Swagger documentation
+
+### API Best Practices
+
+1. **Error Handling**: Implement proper error handling for all HTTP status codes documented in Swagger
+2. **Type Safety**: Use freezed models for type-safe API communication
+3. **Authentication**: Follow authentication patterns specified in Swagger
+4. **Validation**: Validate data according to Swagger schemas before sending requests
+5. **Documentation**: If Swagger docs are unclear, document assumptions in code (exception to no-comments rule)
+
+### Common API Patterns
+
+- **Authentication**: Check Swagger for token format and header requirements
+- **Pagination**: Follow pagination parameters specified in Swagger
+- **Filtering**: Use query parameters as documented in Swagger
+- **File Uploads**: Follow multipart/form-data specs from Swagger
+
+❌ **DO NOT**: Make assumptions about API structure without checking Swagger first
+✅ **ALWAYS**: Refer to Swagger as the single source of truth for API contracts
+
 ## Development Workflow
 
 When working on a task, follow this sequence:
@@ -267,6 +320,7 @@ When using Figma MCP server to generate UI components:
 - Code should be self-documenting through clear naming and structure
 - If code requires explanation, refactor it to be more readable instead
 - Exception: Public API documentation comments are allowed when necessary
+- Exception: When Swagger documentation is unclear, document API assumptions
 
 ## Strict Rules
 
@@ -274,23 +328,27 @@ When using Figma MCP server to generate UI components:
 2. ❌ **DO NOT** use icons outside of flutter_lucide
 3. ❌ **DO NOT** use colors outside of ColorService
 4. ❌ **DO NOT** use color names in ColorService (use semantic names like `text`, `background`, `primary`)
-5. ❌ **DO NOT** leave comments in the code
+5. ❌ **DO NOT** leave comments in the code (except API documentation when needed)
 6. ❌ **DO NOT** blindly copy Figma-generated code without adaptation
 7. ❌ **DO NOT** use standard Flutter UI widgets (TextButton, ElevatedButton, TextField, etc.) without first checking if custom components exist
 8. ❌ **DO NOT** create new UI components without checking ui/ and presentation/widgets/ folders first
 9. ❌ **DO NOT** skip the component discovery step - it is MANDATORY
 10. ❌ **DO NOT** use Navigator.push(), Navigator.pop(), or any direct Navigator methods
 11. ❌ **DO NOT** implement pages without deep linking support
-12. ✅ **ALWAYS** use relative imports when importing local files
-13. ✅ **ALWAYS** name pages with `_page.dart` suffix
-14. ✅ **ALWAYS** place BLoCs in a `blocs/` folder at the same level as their page
-15. ✅ **ALWAYS** check ui/ and presentation/widgets/ folders before adding ANY UI element
-16. ✅ **ALWAYS** use existing custom components instead of standard Flutter widgets
-17. ✅ **ALWAYS** adapt Figma designs to use project's custom components
-18. ✅ **ALWAYS** use go_router for ALL navigation (context.go(), context.push(), context.pop(), etc.)
-19. ✅ **ALWAYS** configure routes in app/router/ directory
-20. ✅ **ALWAYS** implement deep linking support for every page
-21. ✅ **ALWAYS** test both programmatic navigation and deep link access for new pages
+12. ❌ **DO NOT** implement API integration without checking Swagger documentation first
+13. ❌ **DO NOT** make assumptions about API structure - always verify in Swagger
+14. ✅ **ALWAYS** use relative imports when importing local files
+15. ✅ **ALWAYS** name pages with `_page.dart` suffix
+16. ✅ **ALWAYS** place BLoCs in a `blocs/` folder at the same level as their page
+17. ✅ **ALWAYS** check ui/ and presentation/widgets/ folders before adding ANY UI element
+18. ✅ **ALWAYS** use existing custom components instead of standard Flutter widgets
+19. ✅ **ALWAYS** adapt Figma designs to use project's custom components
+20. ✅ **ALWAYS** use go_router for ALL navigation (context.go(), context.push(), context.pop(), etc.)
+21. ✅ **ALWAYS** configure routes in app/router/ directory
+22. ✅ **ALWAYS** implement deep linking support for every page
+23. ✅ **ALWAYS** test both programmatic navigation and deep link access for new pages
+24. ✅ **ALWAYS** check Swagger documentation (https://mikron-back.onrender.com/api-docs/) before implementing API calls
+25. ✅ **ALWAYS** match data models to Swagger schemas exactly
 
 ## Application Domain Context
 

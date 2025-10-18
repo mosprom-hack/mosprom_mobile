@@ -42,7 +42,7 @@ void _initRepositories() {
 
 void _initDataSources() {
   sl.registerLazySingleton<MentorRemoteDataSource>(
-    () => MentorRemoteDataSourceImpl(),
+    () => MentorRemoteDataSourceImpl(dio: sl()),
   );
 }
 
@@ -53,7 +53,7 @@ void _initExternal() {
     final dio = Dio();
 
     dio.options = BaseOptions(
-      baseUrl: 'https://api.example.com',
+      baseUrl: 'https://mikron-back.onrender.com',
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       headers: {

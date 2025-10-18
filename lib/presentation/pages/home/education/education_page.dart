@@ -244,7 +244,7 @@ class _MentorsTab extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final mentor = state.mentors[index];
                     return UserCard(
-                      title: mentor.fullName,
+                      title: mentor.fullNameMultiline,
                       avatarUrl: mentor.avatarUrl,
                       size: UserCardSize.compact,
                       onTap: () {

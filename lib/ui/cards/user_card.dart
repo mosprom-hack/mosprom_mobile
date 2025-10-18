@@ -33,20 +33,23 @@ class UserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = ColorService.instance;
 
-    return Container(
-      height: size == UserCardSize.compact ? 150 : null,
-      decoration: BoxDecoration(
-        color: colors.buttonSecondaryBackground,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: colors.surfaceBorder,
-          width: 1,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: size == UserCardSize.compact ? 150 : null,
+        decoration: BoxDecoration(
+          color: colors.buttonSecondaryBackground,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: colors.surfaceBorder,
+            width: 1,
+          ),
         ),
+        padding: const EdgeInsets.all(20),
+        child: size == UserCardSize.compact
+            ? _buildCompactContent(colors)
+            : _buildExpandedContent(colors),
       ),
-      padding: const EdgeInsets.all(20),
-      child: size == UserCardSize.compact
-          ? _buildCompactContent(colors)
-          : _buildExpandedContent(colors),
     );
   }
 
