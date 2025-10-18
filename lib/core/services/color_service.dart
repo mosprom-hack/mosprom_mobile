@@ -59,5 +59,11 @@ class ColorService {
 
   Color get grabber => AppColors.whiteAlpha60;
 
+  Color get segmentedControlBackground => AppColors.whiteAlpha02;
+  Color get segmentedControlBorder => AppColors.whiteAlpha01;
+  Color get segmentedControlActiveBackground => AppColors.whiteAlpha02;
+  Color get segmentedControlActiveBorder => AppColors.whiteAlpha20;
+  Color get segmentedControlText => AppColors.whiteAlpha80;
+
   Color get transparent => AppColors.transparent;
 }
