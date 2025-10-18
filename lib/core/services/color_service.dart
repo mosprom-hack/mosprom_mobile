@@ -46,5 +46,9 @@ class ColorService {
 
   Color get dropdownMenuBackground => const Color(0xFF1A1A1A);
 
+  Color get checkboxBorder => AppColors.whiteAlpha20;
+  Color get checkboxLabelText => AppColors.whiteAlpha60;
+  Color get checkboxSelectedBackground => AppColors.purple500;
+
   Color get transparent => AppColors.transparent;
 }
