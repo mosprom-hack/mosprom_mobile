@@ -32,5 +32,11 @@ class ColorService {
   Color get navbarItemActiveText => AppColors.white;
   Color get navbarItemInactiveText => AppColors.whiteAlpha40;
 
+  Color get buttonSecondaryText => AppColors.whiteAlpha80;
+  Color get buttonSecondaryBackground => AppColors.whiteAlpha02;
+  Color get buttonSecondaryBorder => AppColors.whiteAlpha30;
+  Color get buttonDisabledText => AppColors.whiteAlpha10;
+  Color get buttonDisabledBackground => AppColors.whiteAlpha05;
+
   Color get transparent => AppColors.transparent;
 }
