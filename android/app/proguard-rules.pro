@@ -42,11 +42,22 @@
 -keep @com.google.gson.annotations.JsonAdapter class * { *; }
 -keep class **$Companion { *; }
 
-# Dio
+# Dio and OkHttp
 -keep class com.squareup.okhttp3.** { *; }
 -keep interface com.squareup.okhttp3.** { *; }
 -dontwarn okhttp3.**
 -dontwarn okio.**
+-dontwarn javax.annotation.**
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# Dio interceptors and adapters
+-keep class io.flutter.plugins.** { *; }
+-keep class * extends io.flutter.plugin.common.MethodCallHandler { *; }
+
+# Network security
+-keep class android.net.http.** { *; }
+-keep class com.android.org.conscrypt.** { *; }
+-keep class org.apache.harmony.xnet.provider.jsse.** { *; }
 
 # Retrofit (if used with Dio)
 -keepattributes Signature
