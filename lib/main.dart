@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'моспром',
+      title: 'FUSE',
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
       theme: _buildDarkTheme(),
