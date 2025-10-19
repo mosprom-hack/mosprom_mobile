@@ -53,6 +53,7 @@ class _AppTabsState extends State<AppTabs> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: _buildTabsRow(colors),
         ),
+        const SizedBox(height: 12),
         Expanded(
           child: IndexedStack(
             index: _currentIndex,
