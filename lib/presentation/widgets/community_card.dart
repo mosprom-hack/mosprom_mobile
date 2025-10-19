@@ -76,8 +76,19 @@ class CommunityCard extends StatelessWidget {
   }
 
   Widget _buildAvatarPlaceholder(ColorService colors) {
+    final firstLetter = name.isNotEmpty ? name[0].toUpperCase() : '?';
+
     return Container(
       color: colors.surfaceElevated,
+      child: Center(
+        child: Text(
+          firstLetter,
+          style: AppFonts.h4.copyWith(
+            color: colors.textPrimary.withValues(alpha: 0.6),
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
     );
   }
 
