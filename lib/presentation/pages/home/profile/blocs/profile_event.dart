@@ -14,16 +14,16 @@ class LoadUserEvent extends ProfileEvent {
 class UpdateUserEvent extends ProfileEvent {
   final String firstName;
   final String lastName;
-  final String nickname;
+  final String telegram;
 
   const UpdateUserEvent({
     required this.firstName,
     required this.lastName,
-    required this.nickname,
+    required this.telegram,
   });
 
   @override
-  List<Object?> get props => [firstName, lastName, nickname];
+  List<Object?> get props => [firstName, lastName, telegram];
 }
 
 class EnableEditModeEvent extends ProfileEvent {

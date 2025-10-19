@@ -8,7 +8,7 @@ class User with _$User {
 
   const factory User({
     required String id,
-    required String nickname,
+    required String telegram,
     required String firstName,
     required String lastName,
     String? phone,

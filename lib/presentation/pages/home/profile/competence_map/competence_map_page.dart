@@ -1,10 +1,13 @@
 import 'dart:ui' show ImageFilter;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mikron_mobile/ui/text_fields/app_text_field_size.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../../../../../core/consts/app_fonts.dart';
+import '../../../../../core/di/injection_container.dart';
 import '../../../../../core/services/color_service.dart';
 import '../../../../../ui/buttons/app_button.dart';
 import '../../../../../ui/buttons/app_button_enums.dart';
@@ -17,15 +20,31 @@ import '../../../../../ui/segmented_control/app_segmented_control.dart';
 import '../../../../../ui/text_fields/app_text_field.dart';
 import '../../../../widgets/competence_radar_chart.dart';
 import '../../../../widgets/event_card.dart';
+import 'blocs/competence_map_bloc.dart';
+import 'blocs/competence_map_event.dart';
+import 'blocs/competence_map_state.dart';
 
-class CompetenceMapPage extends StatefulWidget {
+class CompetenceMapPage extends StatelessWidget {
   const CompetenceMapPage({super.key});
 
   @override
-  State<CompetenceMapPage> createState() => _CompetenceMapPageState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => sl<CompetenceMapBloc>()
+        ..add(const LoadEventsEvent(type: 'Онлайн')),
+      child: const _CompetenceMapPageContent(),
+    );
+  }
 }
 
-class _CompetenceMapPageState extends State<CompetenceMapPage> {
+class _CompetenceMapPageContent extends StatefulWidget {
+  const _CompetenceMapPageContent();
+
+  @override
+  State<_CompetenceMapPageContent> createState() => _CompetenceMapPageContentState();
+}
+
+class _CompetenceMapPageContentState extends State<_CompetenceMapPageContent> {
   int _selectedSegment = 0;
   final TextEditingController _searchController = TextEditingController();
   final DropdownController _cityController = DropdownController();
@@ -34,33 +53,6 @@ class _CompetenceMapPageState extends State<CompetenceMapPage> {
     'Санкт-Петербург',
     'Казань',
     'Новосибирск',
-  ];
-
-  final List<Map<String, String>> _testEvents = [
-    {
-      'title': 'Биотехнологии: грани возможного',
-      'category': 'Биотехнологии',
-      'eventType': 'Воркшоп',
-      'imageUrl': 'https://picsum.photos/200/180?random=1',
-    },
-    {
-      'title': 'Ген. инженерия: этап эволюции',
-      'category': 'Биотехнологии',
-      'eventType': 'Воркшоп',
-      'imageUrl': 'https://picsum.photos/200/180?random=2',
-    },
-    {
-      'title': 'AI в машиностроении: будущее производства',
-      'category': 'AI',
-      'eventType': 'Лекция',
-      'imageUrl': '',
-    },
-    {
-      'title': 'Робототехника и автоматизация',
-      'category': 'Робототехника',
-      'eventType': 'Семинар',
-      'imageUrl': '',
-    },
   ];
 
   @override
@@ -323,6 +315,10 @@ class _CompetenceMapPageState extends State<CompetenceMapPage> {
                   setState(() {
                     _selectedSegment = index;
                   });
+                  final type = index == 0 ? 'Онлайн' : 'Оффлайн';
+                  context.read<CompetenceMapBloc>().add(
+                        ChangeEventTypeEvent(type: type),
+                      );
                 },
               ),
               const SizedBox(height: 24),
@@ -334,6 +330,11 @@ class _CompetenceMapPageState extends State<CompetenceMapPage> {
                       controller: _searchController,
                       placeholder: 'Поиск',
                       leadingIcon: LucideIcons.search,
+                      onChanged: (value) {
+                        context.read<CompetenceMapBloc>().add(
+                              SearchEventsEvent(query: value),
+                            );
+                      },
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -345,13 +346,18 @@ class _CompetenceMapPageState extends State<CompetenceMapPage> {
                     onPressed: () {},
                   ),
                   const SizedBox(width: 8),
-                  SizedBox(
-                    width: 120,
-                    child: AppDropdown(
-                      controller: _cityController,
-                      items: _cities,
-                      placeholder: 'Город',
-                      size: AppDropdownSize.sm,
+                  Opacity(
+                    opacity: 0.5,
+                    child: IgnorePointer(
+                      child: SizedBox(
+                        width: 120,
+                        child: AppDropdown(
+                          controller: _cityController,
+                          items: _cities,
+                          placeholder: 'Город',
+                          size: AppDropdownSize.sm,
+                        ),
+                      ),
                     ),
                   ),
                 ],
@@ -361,26 +367,70 @@ class _CompetenceMapPageState extends State<CompetenceMapPage> {
           ),
         ),
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                childAspectRatio: 0.68,
-              ),
-              itemCount: _testEvents.length,
-              itemBuilder: (context, index) {
-                final event = _testEvents[index];
-                return EventCard(
-                  title: event['title']!,
-                  category: event['category']!,
-                  eventType: event['eventType']!,
-                  imageUrl: event['imageUrl'],
+          child: BlocBuilder<CompetenceMapBloc, CompetenceMapState>(
+            builder: (context, state) {
+              if (state is CompetenceMapLoading) {
+                return const Center(
+                  child: CupertinoActivityIndicator(),
                 );
-              },
-            ),
+              }
+
+              if (state is CompetenceMapError) {
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      state.message,
+                      style: AppFonts.bodyMedium.copyWith(
+                        color: colors.textPrimary.withValues(alpha: 0.6),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+              }
+
+              if (state is CompetenceMapLoaded) {
+                final events = state.filteredEvents;
+
+                if (events.isEmpty) {
+                  return Center(
+                    child: Text(
+                      state.searchQuery.isNotEmpty
+                          ? 'Ничего не найдено'
+                          : 'Нет мероприятий',
+                      style: AppFonts.bodyMedium.copyWith(
+                        color: colors.textPrimary.withValues(alpha: 0.6),
+                      ),
+                    ),
+                  );
+                }
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: 0.68,
+                    ),
+                    itemCount: events.length,
+                    itemBuilder: (context, index) {
+                      final event = events[index];
+                      return EventCard(
+                        title: event.title,
+                        category: event.topic,
+                        eventType: event.type,
+                        imageUrl: event.imageUrl,
+                      );
+                    },
+                  ),
+                );
+              }
+
+              return const SizedBox.shrink();
+            },
           ),
         ),
       ],

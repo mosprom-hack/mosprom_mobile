@@ -6,7 +6,7 @@ abstract class UserRepository {
     required String id,
     String? firstName,
     String? lastName,
-    String? nickname,
+    String? telegram,
     String? phone,
     String? email,
     String? description,

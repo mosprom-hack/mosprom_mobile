@@ -92,7 +92,7 @@ class _ProfilePageContentState extends State<_ProfilePageContent> {
     context.read<ProfileBloc>().add(UpdateUserEvent(
           firstName: _nameController.text,
           lastName: _lastNameController.text,
-          nickname: _telegramController.text,
+          telegram: _telegramController.text,
         ));
     FocusScope.of(context).unfocus();
   }
@@ -106,7 +106,7 @@ class _ProfilePageContentState extends State<_ProfilePageContent> {
         if (state is ProfileLoaded) {
           _nameController.text = state.user.firstName;
           _lastNameController.text = state.user.lastName;
-          _telegramController.text = state.user.nickname;
+          _telegramController.text = state.user.telegram;
         }
       },
       builder: (context, state) {

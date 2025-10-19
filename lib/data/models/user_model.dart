@@ -10,7 +10,7 @@ class UserModel with _$UserModel {
 
   const factory UserModel({
     required String id,
-    required String nickname,
+    required String telegram,
     @JsonKey(name: 'first_name') required String firstName,
     @JsonKey(name: 'last_name') required String lastName,
     String? phone,
@@ -26,7 +26,7 @@ class UserModel with _$UserModel {
   User toEntity() {
     return User(
       id: id,
-      nickname: nickname,
+      telegram: telegram,
       firstName: firstName,
       lastName: lastName,
       phone: phone,
@@ -40,7 +40,7 @@ class UserModel with _$UserModel {
   factory UserModel.fromEntity(User entity) {
     return UserModel(
       id: entity.id,
-      nickname: entity.nickname,
+      telegram: entity.telegram,
       firstName: entity.firstName,
       lastName: entity.lastName,
       phone: entity.phone,

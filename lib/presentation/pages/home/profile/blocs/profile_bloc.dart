@@ -55,7 +55,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           id: UserRemoteDataSourceImpl.currentUserId,
           firstName: event.firstName,
           lastName: event.lastName,
-          nickname: event.nickname,
+          telegram: event.telegram,
         );
         emit(ProfileLoaded(
           user: updatedUser,

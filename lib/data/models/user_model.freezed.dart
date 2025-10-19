@@ -22,7 +22,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserModel {
   String get id => throw _privateConstructorUsedError;
-  String get nickname => throw _privateConstructorUsedError;
+  String get telegram => throw _privateConstructorUsedError;
   @JsonKey(name: 'first_name')
   String get firstName => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
@@ -52,7 +52,7 @@ abstract class $UserModelCopyWith<$Res> {
   @useResult
   $Res call({
     String id,
-    String nickname,
+    String telegram,
     @JsonKey(name: 'first_name') String firstName,
     @JsonKey(name: 'last_name') String lastName,
     String? phone,
@@ -79,7 +79,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @override
   $Res call({
     Object? id = null,
-    Object? nickname = null,
+    Object? telegram = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? phone = freezed,
@@ -94,9 +94,9 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
                       as String,
-            nickname: null == nickname
-                ? _value.nickname
-                : nickname // ignore: cast_nullable_to_non_nullable
+            telegram: null == telegram
+                ? _value.telegram
+                : telegram // ignore: cast_nullable_to_non_nullable
                       as String,
             firstName: null == firstName
                 ? _value.firstName
@@ -143,7 +143,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @useResult
   $Res call({
     String id,
-    String nickname,
+    String telegram,
     @JsonKey(name: 'first_name') String firstName,
     @JsonKey(name: 'last_name') String lastName,
     String? phone,
@@ -169,7 +169,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? nickname = null,
+    Object? telegram = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? phone = freezed,
@@ -184,9 +184,9 @@ class __$$UserModelImplCopyWithImpl<$Res>
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
                   as String,
-        nickname: null == nickname
-            ? _value.nickname
-            : nickname // ignore: cast_nullable_to_non_nullable
+        telegram: null == telegram
+            ? _value.telegram
+            : telegram // ignore: cast_nullable_to_non_nullable
                   as String,
         firstName: null == firstName
             ? _value.firstName
@@ -226,7 +226,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
 class _$UserModelImpl extends _UserModel {
   const _$UserModelImpl({
     required this.id,
-    required this.nickname,
+    required this.telegram,
     @JsonKey(name: 'first_name') required this.firstName,
     @JsonKey(name: 'last_name') required this.lastName,
     this.phone,
@@ -242,7 +242,7 @@ class _$UserModelImpl extends _UserModel {
   @override
   final String id;
   @override
-  final String nickname;
+  final String telegram;
   @override
   @JsonKey(name: 'first_name')
   final String firstName;
@@ -264,7 +264,7 @@ class _$UserModelImpl extends _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, nickname: $nickname, firstName: $firstName, lastName: $lastName, phone: $phone, email: $email, photoUrl: $photoUrl, description: $description, createdAt: $createdAt)';
+    return 'UserModel(id: $id, telegram: $telegram, firstName: $firstName, lastName: $lastName, phone: $phone, email: $email, photoUrl: $photoUrl, description: $description, createdAt: $createdAt)';
   }
 
   @override
@@ -273,8 +273,8 @@ class _$UserModelImpl extends _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.nickname, nickname) ||
-                other.nickname == nickname) &&
+            (identical(other.telegram, telegram) ||
+                other.telegram == telegram) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -294,7 +294,7 @@ class _$UserModelImpl extends _UserModel {
   int get hashCode => Object.hash(
     runtimeType,
     id,
-    nickname,
+    telegram,
     firstName,
     lastName,
     phone,
@@ -321,7 +321,7 @@ class _$UserModelImpl extends _UserModel {
 abstract class _UserModel extends UserModel {
   const factory _UserModel({
     required final String id,
-    required final String nickname,
+    required final String telegram,
     @JsonKey(name: 'first_name') required final String firstName,
     @JsonKey(name: 'last_name') required final String lastName,
     final String? phone,
@@ -338,7 +338,7 @@ abstract class _UserModel extends UserModel {
   @override
   String get id;
   @override
-  String get nickname;
+  String get telegram;
   @override
   @JsonKey(name: 'first_name')
   String get firstName;

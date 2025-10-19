@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
-  String get nickname => throw _privateConstructorUsedError;
+  String get telegram => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call({
     String id,
-    String nickname,
+    String telegram,
     String firstName,
     String lastName,
     String? phone,
@@ -67,7 +67,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = null,
-    Object? nickname = null,
+    Object? telegram = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? phone = freezed,
@@ -82,9 +82,9 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
                       as String,
-            nickname: null == nickname
-                ? _value.nickname
-                : nickname // ignore: cast_nullable_to_non_nullable
+            telegram: null == telegram
+                ? _value.telegram
+                : telegram // ignore: cast_nullable_to_non_nullable
                       as String,
             firstName: null == firstName
                 ? _value.firstName
@@ -130,7 +130,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call({
     String id,
-    String nickname,
+    String telegram,
     String firstName,
     String lastName,
     String? phone,
@@ -154,7 +154,7 @@ class __$$UserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? nickname = null,
+    Object? telegram = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? phone = freezed,
@@ -169,9 +169,9 @@ class __$$UserImplCopyWithImpl<$Res>
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
                   as String,
-        nickname: null == nickname
-            ? _value.nickname
-            : nickname // ignore: cast_nullable_to_non_nullable
+        telegram: null == telegram
+            ? _value.telegram
+            : telegram // ignore: cast_nullable_to_non_nullable
                   as String,
         firstName: null == firstName
             ? _value.firstName
@@ -211,7 +211,7 @@ class __$$UserImplCopyWithImpl<$Res>
 class _$UserImpl extends _User {
   const _$UserImpl({
     required this.id,
-    required this.nickname,
+    required this.telegram,
     required this.firstName,
     required this.lastName,
     this.phone,
@@ -224,7 +224,7 @@ class _$UserImpl extends _User {
   @override
   final String id;
   @override
-  final String nickname;
+  final String telegram;
   @override
   final String firstName;
   @override
@@ -242,7 +242,7 @@ class _$UserImpl extends _User {
 
   @override
   String toString() {
-    return 'User(id: $id, nickname: $nickname, firstName: $firstName, lastName: $lastName, phone: $phone, email: $email, photoUrl: $photoUrl, description: $description, createdAt: $createdAt)';
+    return 'User(id: $id, telegram: $telegram, firstName: $firstName, lastName: $lastName, phone: $phone, email: $email, photoUrl: $photoUrl, description: $description, createdAt: $createdAt)';
   }
 
   @override
@@ -251,8 +251,8 @@ class _$UserImpl extends _User {
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.nickname, nickname) ||
-                other.nickname == nickname) &&
+            (identical(other.telegram, telegram) ||
+                other.telegram == telegram) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -271,7 +271,7 @@ class _$UserImpl extends _User {
   int get hashCode => Object.hash(
     runtimeType,
     id,
-    nickname,
+    telegram,
     firstName,
     lastName,
     phone,
@@ -293,7 +293,7 @@ class _$UserImpl extends _User {
 abstract class _User extends User {
   const factory _User({
     required final String id,
-    required final String nickname,
+    required final String telegram,
     required final String firstName,
     required final String lastName,
     final String? phone,
@@ -307,7 +307,7 @@ abstract class _User extends User {
   @override
   String get id;
   @override
-  String get nickname;
+  String get telegram;
   @override
   String get firstName;
   @override

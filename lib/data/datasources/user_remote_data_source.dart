@@ -8,7 +8,7 @@ abstract class UserRemoteDataSource {
     required String id,
     String? firstName,
     String? lastName,
-    String? nickname,
+    String? telegram,
     String? phone,
     String? email,
     String? description,
@@ -37,7 +37,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     required String id,
     String? firstName,
     String? lastName,
-    String? nickname,
+    String? telegram,
     String? phone,
     String? email,
     String? description,
@@ -47,7 +47,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
 
       if (firstName != null) data['first_name'] = firstName;
       if (lastName != null) data['last_name'] = lastName;
-      if (nickname != null) data['nickname'] = nickname;
+      if (telegram != null) data['telegram'] = telegram;
       if (phone != null) data['phone'] = phone;
       if (email != null) data['email'] = email;
       if (description != null) data['description'] = description;
