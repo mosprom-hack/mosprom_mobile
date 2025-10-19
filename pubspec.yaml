@@ -1,7 +1,7 @@
 name: mikron_mobile
-description: "A new Flutter project."
+description: "FUSE - Social network platform"
 publish_to: 'none'
-version: 0.1.0
+version: 1.0.0
 
 environment:
   sdk: ^3.8.1
@@ -27,6 +27,7 @@ dev_dependencies:
   build_runner: ^2.4.13
   freezed: ^2.5.7
   json_serializable: ^6.8.0
+  flutter_launcher_icons: ^0.14.2
 
 flutter:
   uses-material-design: true
@@ -67,3 +68,10 @@ flutter:
         - asset: assets/fonts/sfpro/SFProText-HeavyItalic.ttf
           weight: 800
           style: italic
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/launcher_icon/icon.png"
+  remove_alpha_ios: true
+  background_color_ios: "#000000"
