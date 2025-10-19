@@ -50,5 +50,9 @@ abstract class AppColors {
   static const Color red800 = Color(0xFF8A1717);
   static const Color red900 = Color(0xFF691111);
 
+  static const Color purpleAccent = Color(0xFFE0A7FE);
+  static const Color purpleAccentAlpha80 = Color(0xCCE0A7FE);
+  static const Color purpleAccentAlpha25 = Color(0x409B45C9);
+
   static const Color transparent = Colors.transparent;
 }

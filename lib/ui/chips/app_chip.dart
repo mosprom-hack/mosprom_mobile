@@ -24,7 +24,7 @@ class AppChip extends StatelessWidget {
       decoration: BoxDecoration(
         color: variant == AppChipVariant.defaultChip
             ? colors.buttonSecondaryBackground
-            : colors.transparent,
+            : colors.chipRecommendedBackground,
         border: variant == AppChipVariant.defaultChip
             ? Border.all(color: colors.surfaceBorder, width: 0.5)
             : null,
@@ -34,8 +34,9 @@ class AppChip extends StatelessWidget {
         label,
         style: AppFonts.labelSmall.copyWith(
           color: variant == AppChipVariant.defaultChip
-              ? colors.tabInactiveText
-              : const Color(0xCCE0A7FE),
+              ? colors.chipDefaultText
+              : colors.chipRecommendedText,
+          height: 12 / 10,
         ),
       ),
     );

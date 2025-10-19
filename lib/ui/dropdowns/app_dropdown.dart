@@ -169,6 +169,8 @@ class _AppDropdownState extends State<AppDropdown>
                 style: _getTextStyle().copyWith(
                   color: _getTextColor(colors, isDisabled, hasValue),
                 ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
             ),
             const SizedBox(width: 8),
@@ -295,6 +297,8 @@ class _AppDropdownState extends State<AppDropdown>
                   ? colors.textPrimary
                   : colors.buttonSecondaryText,
             ),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
           ),
         ),
       ),

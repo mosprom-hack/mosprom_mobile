@@ -65,5 +65,9 @@ class ColorService {
   Color get segmentedControlActiveBorder => AppColors.whiteAlpha20;
   Color get segmentedControlText => AppColors.whiteAlpha80;
 
+  Color get chipRecommendedBackground => AppColors.purpleAccentAlpha25;
+  Color get chipRecommendedText => AppColors.purpleAccentAlpha80;
+  Color get chipDefaultText => AppColors.whiteAlpha70;
+
   Color get transparent => AppColors.transparent;
 }
