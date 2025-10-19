@@ -32,6 +32,8 @@ class AppChip extends StatelessWidget {
       ),
       child: Text(
         label,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: AppFonts.labelSmall.copyWith(
           color: variant == AppChipVariant.defaultChip
               ? colors.chipDefaultText

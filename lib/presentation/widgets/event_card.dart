@@ -46,24 +46,23 @@ class EventCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Row(
-            children: [
-              Flexible(
-                child: AppChip(
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                AppChip(
                   label: category,
                   variant: AppChipVariant.recommended,
                   size: AppChipSize.xs,
                 ),
-              ),
-              const SizedBox(width: 4),
-              Flexible(
-                child: AppChip(
+                const SizedBox(width: 4),
+                AppChip(
                   label: eventType,
                   variant: AppChipVariant.defaultChip,
                   size: AppChipSize.xs,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           const SizedBox(height: 12),
           Text(

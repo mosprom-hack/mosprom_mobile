@@ -40,11 +40,7 @@ class AppTab extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (icon != null) ...[
-              Icon(
-                icon,
-                size: 16,
-                color: _getTextColor(colors),
-              ),
+              Icon(icon, size: 16, color: _getTextColor(colors)),
               const SizedBox(width: 4),
             ],
             Flexible(
