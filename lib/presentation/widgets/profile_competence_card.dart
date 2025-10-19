@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import '../../app/router/app_routes.dart';
 import '../../core/consts/app_fonts.dart';
 import '../../core/services/color_service.dart';
 
 class ProfileCompetenceCard extends StatelessWidget {
-  final VoidCallback? onTap;
-
-  const ProfileCompetenceCard({super.key, this.onTap});
+  const ProfileCompetenceCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class ProfileCompetenceCard extends StatelessWidget {
             Material(
               color: Colors.transparent,
               child: InkWell(
-                onTap: onTap,
+                onTap: () => context.push(AppRoutes.competenceMap),
                 borderRadius: BorderRadius.circular(32),
                 splashColor: colors.buttonSecondaryText.withValues(alpha: 0.1),
                 highlightColor: colors.buttonSecondaryText.withValues(

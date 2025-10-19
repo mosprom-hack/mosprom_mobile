@@ -166,9 +166,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: ProfileCvCard(onTap: () {}),
                     ),
                     const SizedBox(width: 16),
-                    Expanded(
+                    const Expanded(
                       flex: 3,
-                      child: ProfileCompetenceCard(onTap: () {}),
+                      child: ProfileCompetenceCard(),
                     ),
                   ],
                 ),

@@ -5,6 +5,7 @@ import '../../presentation/pages/home/communities/communities_page.dart';
 import '../../presentation/pages/home/education/education_page.dart';
 import '../../presentation/pages/home/profile/profile_page.dart';
 import '../../presentation/pages/home/education/mentor_detail/mentor_detail_page.dart';
+import '../../presentation/pages/profile/competence_map/competence_map_page.dart';
 import 'app_routes.dart';
 import 'scaffold_with_navbar.dart';
 
@@ -63,6 +64,13 @@ class AppRouter {
                 path: AppRoutes.profile,
                 name: 'profile',
                 builder: (context, state) => const ProfilePage(),
+                routes: [
+                  GoRoute(
+                    path: 'competence-map',
+                    name: 'competenceMap',
+                    builder: (context, state) => const CompetenceMapPage(),
+                  ),
+                ],
               ),
             ],
           ),
