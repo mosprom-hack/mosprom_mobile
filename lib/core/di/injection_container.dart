@@ -3,22 +3,27 @@ import 'package:dio/dio.dart';
 import '../../data/datasources/mentor_remote_data_source.dart';
 import '../../data/datasources/user_remote_data_source.dart';
 import '../../data/datasources/event_remote_data_source.dart';
+import '../../data/datasources/post_remote_data_source.dart';
 import '../../data/repositories/mentor_repository_impl.dart';
 import '../../data/repositories/user_repository_impl.dart';
 import '../../data/repositories/event_repository_impl.dart';
+import '../../data/repositories/post_repository_impl.dart';
 import '../../domain/repositories/mentor_repository.dart';
 import '../../domain/repositories/user_repository.dart';
 import '../../domain/repositories/event_repository.dart';
+import '../../domain/repositories/post_repository.dart';
 import '../../domain/usecases/get_mentors.dart';
 import '../../domain/usecases/get_mentor_by_id.dart';
 import '../../domain/usecases/get_current_user.dart';
 import '../../domain/usecases/update_user.dart';
 import '../../domain/usecases/get_events.dart';
 import '../../domain/usecases/get_events_by_type.dart';
+import '../../domain/usecases/get_posts.dart';
 import '../../presentation/pages/home/education/blocs/education_bloc.dart';
 import '../../presentation/pages/home/education/mentor_detail/blocs/mentor_detail_bloc.dart';
 import '../../presentation/pages/home/profile/blocs/profile_bloc.dart';
 import '../../presentation/pages/home/profile/competence_map/blocs/competence_map_bloc.dart';
+import '../../presentation/pages/home/feed/blocs/feed_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -53,6 +58,10 @@ void _initBlocs() {
       getEventsByType: sl(),
     ),
   );
+
+  sl.registerFactory(
+    () => FeedBloc(getPosts: sl()),
+  );
 }
 
 void _initUseCases() {
@@ -62,6 +71,7 @@ void _initUseCases() {
   sl.registerLazySingleton(() => UpdateUser(sl()));
   sl.registerLazySingleton(() => GetEvents(sl()));
   sl.registerLazySingleton(() => GetEventsByType(sl()));
+  sl.registerLazySingleton(() => GetPosts(sl()));
 }
 
 void _initRepositories() {
@@ -76,6 +86,10 @@ void _initRepositories() {
   sl.registerLazySingleton<EventRepository>(
     () => EventRepositoryImpl(remoteDataSource: sl()),
   );
+
+  sl.registerLazySingleton<PostRepository>(
+    () => PostRepositoryImpl(remoteDataSource: sl()),
+  );
 }
 
 void _initDataSources() {
@@ -89,6 +103,10 @@ void _initDataSources() {
 
   sl.registerLazySingleton<EventRemoteDataSource>(
     () => EventRemoteDataSourceImpl(dio: sl()),
+  );
+
+  sl.registerLazySingleton<PostRemoteDataSource>(
+    () => PostRemoteDataSourceImpl(dio: sl()),
   );
 }
 

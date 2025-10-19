@@ -112,8 +112,21 @@ class _CommunityPostCardState extends State<CommunityPostCard> {
   }
 
   Widget _buildAvatarPlaceholder(ColorService colors) {
+    final firstLetter = widget.authorName.isNotEmpty
+        ? widget.authorName[0].toUpperCase()
+        : '?';
+
     return Container(
       color: colors.surfaceElevated,
+      child: Center(
+        child: Text(
+          firstLetter,
+          style: AppFonts.h4.copyWith(
+            color: colors.textPrimary.withValues(alpha: 0.6),
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
     );
   }
 
