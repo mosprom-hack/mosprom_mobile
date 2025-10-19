@@ -79,15 +79,6 @@ class _CommunityPostCardState extends State<CommunityPostCard> {
             ),
           ),
           _buildSubscribeButton(colors),
-          const SizedBox(width: 12),
-          GestureDetector(
-            onTap: () {},
-            child: Icon(
-              LucideIcons.ellipsis,
-              size: 24,
-              color: colors.textPrimary,
-            ),
-          ),
         ],
       ),
     );
