@@ -102,8 +102,10 @@ flutter analyze
 
 ## Скачать приложение
 
-[Ссылка на APK будет добавлена позже]
+### Android
+[Скачать APK](https://drive.google.com/file/d/1dLxBzY4nR8JGZxB-SsVpd9ctxJ7qnFrC/view?usp=sharing)
 
+### iOS
 Для получения доступа в TestFlight напишите в Telegram: [@maximcandy](https://t.me/maximcandy)
 
 ## Платформы
