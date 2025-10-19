@@ -5,7 +5,7 @@ import '../../presentation/pages/home/communities/communities_page.dart';
 import '../../presentation/pages/home/education/education_page.dart';
 import '../../presentation/pages/home/profile/profile_page.dart';
 import '../../presentation/pages/home/education/mentor_detail/mentor_detail_page.dart';
-import '../../presentation/pages/profile/competence_map/competence_map_page.dart';
+import '../../presentation/pages/home/profile/competence_map/competence_map_page.dart';
 import 'app_routes.dart';
 import 'scaffold_with_navbar.dart';
 
@@ -89,18 +89,12 @@ class _ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Error'),
-      ),
+      appBar: AppBar(title: const Text('Error')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.error_outline,
-              size: 64,
-              color: Colors.red,
-            ),
+            const Icon(Icons.error_outline, size: 64, color: Colors.red),
             const SizedBox(height: 16),
             const Text(
               'Page not found',
