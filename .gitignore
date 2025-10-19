@@ -26,4 +26,8 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 
+# IDE specific files
+.idea/
+.vscode/
+
 CLAUDE.md
